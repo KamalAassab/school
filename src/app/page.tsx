@@ -1,0 +1,34 @@
+import type { Metadata } from "next";
+
+import { Hero } from "@/components/sections/home/hero";
+import { FactsStrip } from "@/components/sections/home/facts-strip";
+import { Pillars } from "@/components/sections/home/pillars";
+import { Director } from "@/components/sections/home/director";
+import { CambridgeHighlight } from "@/components/sections/home/cambridge-highlight";
+import { CyclesRow } from "@/components/sections/home/cycles-row";
+import { Manifesto } from "@/components/sections/home/manifesto";
+import { Canteen } from "@/components/sections/home/canteen";
+import { CtaBand } from "@/components/sections/cta-band";
+
+export const metadata: Metadata = {
+  title: "Accueil",
+};
+
+export default function HomePage() {
+  return (
+    <>
+      <Hero />
+      <FactsStrip />
+      <Pillars />
+      <Director />
+      <CambridgeHighlight />
+      <CyclesRow />
+      <Manifesto />
+      <Canteen />
+      <CtaBand
+        title="Prêt à donner à votre enfant le meilleur tremplin ?"
+        description="Les inscriptions et réinscriptions pour l'année 2025/2026 sont ouvertes. Notre équipe vous accompagne à chaque étape."
+      />
+    </>
+  );
+}

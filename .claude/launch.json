@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "school-academy-dev",
+      "runtimeExecutable": "C:\\Users\\KAMAL.AASSAB.EXT\\nodejs\\node-v26.4.0-win-x64\\node.exe",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev", "--turbopack"],
+      "port": 3000
+    }
+  ]
+}

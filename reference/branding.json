@@ -1,0 +1,142 @@
+{
+    "colorScheme": "light",
+    "fonts": [
+      {
+        "family": "monospace",
+        "count": 43
+      },
+      {
+        "family": "Lucida Sans Typewriter",
+        "count": 38
+      },
+      {
+        "family": "Lucida Console",
+        "count": 38
+      },
+      {
+        "family": "monaco",
+        "count": 38
+      },
+      {
+        "family": "Bitstream Vera Sans Mono",
+        "count": 38
+      },
+      {
+        "family": "Arial",
+        "count": 16
+      },
+      {
+        "family": "Calibri",
+        "count": 14
+      },
+      {
+        "family": "proxima-nova",
+        "count": 3
+      },
+      {
+        "family": "Helvetica Neue",
+        "count": 3
+      },
+      {
+        "family": "Helvetica",
+        "count": 3
+      }
+    ],
+    "colors": {
+      "primary": "#E85E10",
+      "secondary": "#F5DEB3",
+      "accent": "#B84300",
+      "background": "#F4F7F6",
+      "textPrimary": "#B84300",
+      "link": "#B84300"
+    },
+    "typography": {
+      "fontFamilies": {
+        "primary": "Calibri",
+        "heading": "monospace"
+      },
+      "fontStacks": {
+        "body": [
+          "Calibri"
+        ],
+        "heading": [
+          "monospace"
+        ],
+        "paragraph": [
+          "Lucida Sans Typewriter",
+          "Lucida Console",
+          "monaco",
+          "Bitstream Vera Sans Mono",
+          "monospace"
+        ]
+      },
+      "fontSizes": {
+        "h1": "26px",
+        "h2": "56px",
+        "body": "16px"
+      }
+    },
+    "spacing": {
+      "baseUnit": 10,
+      "borderRadius": "5px"
+    },
+    "components": {
+      "input": {
+        "background": "#F9F9F9",
+        "textColor": "#000000",
+        "borderColor": "#E5E5E5",
+        "borderRadius": "3px",
+        "borderRadiusCorners": {
+          "topLeft": "3px",
+          "topRight": "3px",
+          "bottomRight": "3px",
+          "bottomLeft": "3px"
+        },
+        "shadow": "none"
+      }
+    },
+    "images": {
+      "logo": "https://www.schoolacademy.ma/img/social/logo.svg",
+      "favicon": null,
+      "ogImage": null,
+      "logoAlt": "School Academy"
+    },
+    "__llm_logo_reasoning": {
+      "selectedIndex": 0,
+      "reasoning": "Heuristic fallback: Moderate indicators: in header, no link (brand logos usually link to homepage, penalty), header location, visible, src contains logo, alt exactly matches brand name \"School Academy\", reasonable size. Score: 75. May benefit from LLM validation.",
+      "confidence": 0.5,
+      "source": "heuristic"
+    },
+    "__llm_button_reasoning": {
+      "primary": {
+        "index": -1,
+        "text": "N/A",
+        "reasoning": "LLM failed"
+      },
+      "secondary": {
+        "index": -1,
+        "text": "N/A",
+        "reasoning": "LLM failed"
+      },
+      "confidence": 0
+    },
+    "confidence": {
+      "buttons": 0,
+      "colors": 0,
+      "overall": 0
+    },
+    "__llm_metadata": {
+      "logoSelection": {
+        "llmCalled": true,
+        "llmSucceeded": false,
+        "finalSource": "heuristic"
+      },
+      "buttonClassification": {
+        "llmCalled": true,
+        "llmSucceeded": false,
+        "error": "LLM call failed or returned fallback values"
+      }
+    },
+    "brandName": "School Academy",
+    "logo": "https://www.schoolacademy.ma/img/social/logo.svg"
+  }
