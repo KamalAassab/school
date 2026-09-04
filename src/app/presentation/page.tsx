@@ -74,7 +74,7 @@ export default function PresentationPage() {
           <Reveal className="relative">
             <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-[28px] sm:mx-auto lg:mx-0">
               <Image
-                src="/images/directeur.jpg"
+                src="/images/directeur.webp"
                 alt="Directeur d'établissement, School Academy"
                 fill
                 sizes="(min-width: 1024px) 32vw, 80vw"

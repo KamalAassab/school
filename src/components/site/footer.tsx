@@ -171,7 +171,7 @@ export function Footer() {
 
       <div className="relative h-[70px] w-full overflow-hidden sm:h-[100px]">
         <Image
-          src="/assets/footer-bg.png"
+          src="/assets/footer-bg.webp"
           alt=""
           aria-hidden
           fill

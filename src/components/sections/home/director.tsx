@@ -14,7 +14,7 @@ export function Director() {
         <Reveal className="mx-auto w-full max-w-4xl">
           <VideoPlayer
             src="/media/mot-du-directeur.mp4"
-            poster="/images/directeur.jpg"
+            poster="/images/directeur.webp"
             className="aspect-video w-full rounded-[28px]"
           />
         </Reveal>

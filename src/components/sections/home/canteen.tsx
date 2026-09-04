@@ -16,7 +16,7 @@ export function Canteen() {
         <Reveal className="relative order-2 lg:order-1">
           <div className="relative aspect-[4/3.1] w-full overflow-hidden rounded-[28px]">
             <Image
-              src="/images/cantine.png"
+              src="/images/cantine.webp"
               alt="Cantine School Academy"
               fill
               sizes="(min-width: 1024px) 42vw, 90vw"

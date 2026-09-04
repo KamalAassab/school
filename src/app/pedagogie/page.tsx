@@ -76,7 +76,7 @@ export default function PedagogiePage() {
             <Reveal delay={0.1} className="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-md mx-auto">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-[0_12px_32px_-10px_rgba(32,26,21,0.2)]">
                 <Image
-                  src="/images/pedagogie/tice-tbi.jpg"
+                  src="/images/pedagogie/tice-tbi.webp"
                   alt="Tableau blanc interactif, cycle maternelle School Academy"
                   fill
                   sizes="(min-width: 640px) 240px, 45vw"
@@ -85,7 +85,7 @@ export default function PedagogiePage() {
               </div>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-[0_12px_32px_-10px_rgba(32,26,21,0.2)]">
                 <Image
-                  src="/images/pedagogie/tice-table.jpg"
+                  src="/images/pedagogie/tice-table.webp"
                   alt="Table interactive tactile, School Academy"
                   fill
                   sizes="(min-width: 640px) 240px, 45vw"

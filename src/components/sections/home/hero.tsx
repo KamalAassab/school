@@ -120,7 +120,7 @@ export function Hero() {
 
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] sm:aspect-[5/5.2] lg:aspect-[4/4.6]">
             <Image
-              src="/images/eleves-hero.jpg"
+              src="/images/eleves-hero.webp"
               alt="Élèves de School Academy"
               fill
               priority

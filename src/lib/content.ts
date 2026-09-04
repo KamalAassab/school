@@ -334,7 +334,7 @@ export const espaceScolaire = [
       { label: "Organisation", value: "Cycles de 45 minutes" },
       { label: "Encadrement", value: "Professeurs et administration présents" },
     ],
-    image: "/images/cantine.png",
+    image: "/images/cantine.webp",
   },
   {
     id: "bcd",
