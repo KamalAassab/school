@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRightIcon } from "@/components/ui/arrow-right";
+import { ShieldCheckIcon } from "@/components/ui/shield-check";
 
 import { Reveal } from "@/components/site/reveal";
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,7 @@ const cantine = espaceScolaire[0];
 
 export function Canteen() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-11 sm:py-14">
       <div className="container-page grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.9fr_1fr] lg:gap-16">
         <Reveal className="relative order-2 lg:order-1">
           <div className="relative aspect-[4/3.1] w-full overflow-hidden rounded-[28px]">
@@ -25,7 +26,7 @@ export function Canteen() {
         </Reveal>
 
         <Reveal delay={0.1} className="order-1 flex flex-col gap-6 lg:order-2">
-          <ShieldCheck weight="regular" className="size-9 text-primary" />
+          <ShieldCheckIcon size={36} className="text-primary" />
           <h2 className="font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl">
             {cantine.title}, une exigence de qualité
           </h2>
@@ -43,7 +44,7 @@ export function Canteen() {
           <Button asChild variant="outline" className="mt-2 w-fit">
             <Link href="/vie-scolaire#cantine">
               Découvrir la vie scolaire
-              <ArrowRight weight="bold" className="size-4" />
+              <ArrowRightIcon size={16} />
             </Link>
           </Button>
         </Reveal>

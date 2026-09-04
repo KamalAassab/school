@@ -1,45 +1,41 @@
-import type { Icon } from "@phosphor-icons/react";
-
 import { Reveal } from "@/components/site/reveal";
 import { cn } from "@/lib/utils";
+import type { IconComponent } from "@/lib/icon-type";
 
 export function PageHero({
-  eyebrow,
   title,
   description,
   icon: IconCmp,
   stats,
   className,
 }: {
-  eyebrow: string;
   title: React.ReactNode;
   description: string;
-  icon: Icon;
+  icon: IconComponent;
   stats?: { label: string; value: string }[];
   className?: string;
 }) {
   return (
-    <section className={cn("relative overflow-hidden pb-16 pt-14 sm:pb-20 sm:pt-16", className)}>
+    <section className={cn("relative overflow-hidden pt-8 pb-10 sm:pt-10 sm:pb-12", className)}>
       <div
         aria-hidden
         className="pointer-events-none absolute -right-40 top-[-140px] size-[460px] rounded-full bg-brand/[0.09] blur-3xl"
       />
-      <div className="container-page relative grid grid-cols-1 items-end gap-10 lg:grid-cols-[1.3fr_0.7fr]">
-        <Reveal className="flex flex-col gap-6">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-[13px] font-medium text-secondary-foreground">
-            <IconCmp weight="fill" className="size-3.5 text-primary" />
-            {eyebrow}
-          </span>
-          <h1 className="font-display text-4xl font-medium leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.25rem]">
-            {title}
-          </h1>
-          <p className="max-w-[58ch] text-[17px] leading-relaxed text-muted-foreground">
+      <div className="container-page relative flex flex-col gap-8">
+        <Reveal className="flex flex-col gap-5">
+          <div className="flex items-center gap-4">
+            <IconCmp size={32} className="shrink-0 text-primary" />
+            <h1 className="font-display text-[2.25rem] font-medium leading-[1.1] tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]">
+              {title}
+            </h1>
+          </div>
+          <p className="max-w-[70ch] text-[17px] leading-relaxed text-muted-foreground">
             {description}
           </p>
         </Reveal>
 
         {stats && stats.length > 0 ? (
-          <Reveal delay={0.1} className="grid grid-cols-2 gap-4 lg:grid-cols-1">
+          <Reveal delay={0.1} className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {stats.map((stat) => (
               <div
                 key={stat.label}

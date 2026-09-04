@@ -8,7 +8,7 @@ export function Logo({ className, dark = false }: { className?: string; dark?: b
     <Link
       href="/"
       className={cn("flex items-center gap-3 shrink-0", className)}
-      aria-label="School Academy — accueil"
+      aria-label="School Academy, accueil"
     >
       <Image
         src="/logo.svg"

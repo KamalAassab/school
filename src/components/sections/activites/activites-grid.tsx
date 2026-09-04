@@ -1,20 +1,28 @@
-import {
-  Trophy,
-  Compass,
-  Confetti,
-  MoonStars,
-  HandHeart,
-  Lightbulb,
-  Binoculars,
-  Flag,
-  Heart,
-} from "@phosphor-icons/react/dist/ssr";
-import type { Icon } from "@phosphor-icons/react";
+import { BicepsFlexedIcon } from "@/components/ui/biceps-flexed";
+import { CompassIcon } from "@/components/ui/compass";
+import { PartyPopperIcon } from "@/components/ui/party-popper";
+import { MoonIcon } from "@/components/ui/moon";
+import { HandHeartIcon } from "@/components/ui/hand-heart";
+import { SparklesIcon } from "@/components/ui/sparkles";
+import { TelescopeIcon } from "@/components/ui/telescope";
+import { WaypointsIcon } from "@/components/ui/waypoints";
+import { HeartIcon } from "@/components/ui/heart";
+import type { IconComponent } from "@/lib/icon-type";
 
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 import { activites } from "@/lib/content";
 
-const icons: Icon[] = [Trophy, Compass, Confetti, MoonStars, HandHeart, Lightbulb, Binoculars, Flag, Heart];
+const icons: IconComponent[] = [
+  BicepsFlexedIcon,
+  CompassIcon,
+  PartyPopperIcon,
+  MoonIcon,
+  HandHeartIcon,
+  SparklesIcon,
+  TelescopeIcon,
+  WaypointsIcon,
+  HeartIcon,
+];
 
 export function ActivitesGrid() {
   return (
@@ -32,8 +40,8 @@ export function ActivitesGrid() {
             }
           >
             <Icon
-              weight="regular"
-              className={featured ? "size-9 text-brand" : "size-8 text-primary"}
+              size={featured ? 36 : 32}
+              className={featured ? "text-brand" : "text-primary"}
             />
             <div className="flex flex-col gap-2">
               <h3

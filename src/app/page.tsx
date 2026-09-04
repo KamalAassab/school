@@ -8,6 +8,7 @@ import { CambridgeHighlight } from "@/components/sections/home/cambridge-highlig
 import { CyclesRow } from "@/components/sections/home/cycles-row";
 import { Manifesto } from "@/components/sections/home/manifesto";
 import { Canteen } from "@/components/sections/home/canteen";
+import { CambridgeSeal } from "@/components/sections/home/cambridge-seal";
 import { CtaBand } from "@/components/sections/cta-band";
 
 export const metadata: Metadata = {
@@ -25,9 +26,11 @@ export default function HomePage() {
       <CyclesRow />
       <Manifesto />
       <Canteen />
+      <CambridgeSeal />
       <CtaBand
         title="Prêt à donner à votre enfant le meilleur tremplin ?"
-        description="Les inscriptions et réinscriptions pour l'année 2025/2026 sont ouvertes. Notre équipe vous accompagne à chaque étape."
+        description="Les inscriptions et réinscriptions pour l'année 2026/2027 sont ouvertes. Notre équipe vous accompagne à chaque étape."
+        videoSrc="/media/intro.mp4"
       />
     </>
   );

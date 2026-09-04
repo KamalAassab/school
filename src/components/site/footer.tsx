@@ -1,15 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
-import { EnvelopeSimple, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { MailboxIcon } from "@/components/ui/mailbox";
+import { PhoneIcon } from "@/components/ui/phone";
+import { MapPinIcon } from "@/components/ui/map-pin";
+import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right";
+import { FacebookIcon } from "@/components/ui/facebook";
+import { InstagramIcon } from "@/components/ui/instagram";
+import { YoutubeIcon } from "@/components/ui/youtube";
 
+import { NewsletterForm } from "@/components/site/newsletter-form";
 import { footerNav, siteConfig } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-background">
-      <div className="container-page py-16 sm:py-20">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_repeat(4,1fr)] lg:gap-8">
-          <div className="flex flex-col gap-5">
+    <footer className="bg-[#fdf8f0] text-foreground">
+      <div className="container-page flex flex-col gap-10 pt-12 pb-8 sm:pt-14 sm:pb-10">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+          <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-3" aria-label="School Academy">
               <Image
                 src="/logo.svg"
@@ -18,34 +25,116 @@ export function Footer() {
                 height={40}
                 className="h-9 w-auto"
               />
-              <span className="font-display text-[17px] font-semibold text-background">
+              <span className="font-display text-[17px] font-semibold text-foreground">
                 School Academy
               </span>
             </Link>
-            <p className="max-w-[32ch] text-[15px] leading-relaxed text-background/60">
-              {siteConfig.tagline} — école privée du préscolaire au lycée, centre agréé
+            <p className="text-[15px] leading-relaxed text-muted-foreground">
+              {siteConfig.tagline}, école privée du préscolaire au lycée, centre agréé
               Cambridge Assessment English.
             </p>
-            <Link
-              href={`mailto:${siteConfig.email}`}
-              className="inline-flex items-center gap-2 text-[15px] text-background/85 transition-colors hover:text-brand"
-            >
-              <EnvelopeSimple weight="regular" className="size-[18px]" />
-              {siteConfig.email}
-            </Link>
+
+            <div className="flex flex-col gap-2">
+              <Link
+                href={`mailto:${siteConfig.email}`}
+                className="inline-flex items-center gap-2 text-[14px] text-foreground/85 transition-colors hover:text-primary"
+              >
+                <MailboxIcon size={17} className="shrink-0" />
+                {siteConfig.email}
+              </Link>
+              {siteConfig.phones.map((phone) => (
+                <Link
+                  key={phone}
+                  href={`tel:${phone.replace(/\s/g, "")}`}
+                  className="inline-flex items-center gap-2 text-[14px] text-foreground/85 transition-colors hover:text-primary"
+                >
+                  <PhoneIcon size={17} className="shrink-0" />
+                  {phone}
+                </Link>
+              ))}
+              <Link
+                href={siteConfig.mapLink}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-start gap-2 text-[14px] text-foreground/85 transition-colors hover:text-primary"
+              >
+                <MapPinIcon size={17} className="mt-0.5 shrink-0" />
+                {siteConfig.address}
+              </Link>
+            </div>
+
+            <ul className="flex items-center gap-2">
+              <li>
+                <Link
+                  href={siteConfig.social.facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="School Academy sur Facebook"
+                  className="flex size-10 items-center justify-center rounded-full bg-muted text-foreground/70 transition-colors hover:bg-secondary hover:text-primary"
+                >
+                  <FacebookIcon size={18} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={siteConfig.social.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="School Academy sur Instagram"
+                  className="flex size-10 items-center justify-center rounded-full bg-muted text-foreground/70 transition-colors hover:bg-secondary hover:text-primary"
+                >
+                  <InstagramIcon size={18} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={siteConfig.social.youtube}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="School Academy sur YouTube"
+                  className="flex size-10 items-center justify-center rounded-full bg-muted text-foreground/70 transition-colors hover:bg-secondary hover:text-primary"
+                >
+                  <YoutubeIcon size={18} />
+                </Link>
+              </li>
+            </ul>
+
+            <div className="mt-1 rounded-2xl bg-muted p-4">
+              <NewsletterForm />
+            </div>
           </div>
 
+          <div className="relative min-h-[200px] overflow-hidden rounded-[28px] lg:min-h-0">
+            <iframe
+              src={siteConfig.mapUrl}
+              title="School Academy sur la carte"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="size-full min-h-[200px] border-0 lg:min-h-full"
+            />
+            {/* Blocks drag/scroll interaction so the embed reads as a static preview; opens the real map instead */}
+            <Link
+              href={siteConfig.mapLink}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Ouvrir l'itinéraire vers School Academy dans Google Maps"
+              className="absolute inset-0"
+            />
+          </div>
+        </div>
+
+        <div className="grid w-full grid-cols-2 gap-6 sm:grid-cols-4">
           {footerNav.map((col) => (
-            <div key={col.title} className="flex flex-col gap-4">
-              <h3 className="font-display text-[15px] font-medium text-background">
+            <div key={col.title} className="flex flex-col gap-3">
+              <h3 className="font-display text-[15px] font-medium text-foreground">
                 {col.title}
               </h3>
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-2">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-[14px] text-background/55 transition-colors hover:text-background"
+                      className="text-[14px] text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {link.label}
                     </Link>
@@ -56,18 +145,29 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-background/10 pt-8 sm:flex-row sm:items-center">
-          <p className="text-[13px] text-background/40">
+        <div className="flex flex-col items-start justify-between gap-6 border-t border-ink/[0.08] pt-6 sm:flex-row sm:items-center">
+          <p className="text-[13px] text-muted-foreground/70">
             © {new Date().getFullYear()} School Academy. Tous droits réservés.
           </p>
           <Link
             href="/inscription"
-            className="inline-flex items-center gap-1.5 text-[13px] font-medium text-background/70 transition-colors hover:text-brand"
+            className="inline-flex items-center gap-1.5 text-[13px] font-medium text-foreground/70 transition-colors hover:text-primary"
           >
             Inscriptions {siteConfig.year}
-            <ArrowUpRight weight="bold" className="size-3.5" />
+            <ArrowUpRightIcon size={14} />
           </Link>
         </div>
+      </div>
+
+      <div className="relative h-[70px] w-full overflow-hidden sm:h-[100px]">
+        <Image
+          src="/assets/footer-bg.png"
+          alt=""
+          aria-hidden
+          fill
+          sizes="100vw"
+          className="object-cover object-top"
+        />
       </div>
     </footer>
   );

@@ -13,15 +13,15 @@
   --popover: #ffffff;
   --popover-foreground: #201a15;
 
-  /* Brand orange — large text / icons / borders / tinted surfaces only (AA @ normal text needs dark ink on top) */
+  /* Brand orange: large text / icons / borders / tinted surfaces only (AA @ normal text needs dark ink on top) */
   --brand: #e85e10;
   --brand-foreground: #201a15;
 
-  /* Deep brand — solid buttons, links, small-text-safe (contrast 5.4:1 on white) */
+  /* Deep brand: solid buttons, links, small-text-safe (contrast 5.4:1 on white) */
   --primary: #b84300;
   --primary-foreground: #fdf8f2;
 
-  /* Warm cream wash — section tints only, never full-page canvas */
+  /* Warm cream wash: section tints only, never full-page canvas */
   --secondary: #f5ead2;
   --secondary-foreground: #3a2a17;
 

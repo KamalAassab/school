@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { X } from "@phosphor-icons/react";
+import { XIcon } from "@/components/ui/x";
 
 import { cn } from "@/lib/utils";
 
@@ -52,7 +52,7 @@ function SheetContent({
       >
         {children}
         <DialogPrimitive.Close className="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-ink/[0.06] outline-none focus-visible:ring-2 focus-visible:ring-ring">
-          <X className="size-5" />
+          <XIcon size={20} />
           <span className="sr-only">Fermer</span>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>

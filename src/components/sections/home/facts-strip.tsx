@@ -1,12 +1,15 @@
-import { GraduationCap, Certificate, ForkKnife, UsersThree } from "@phosphor-icons/react/dist/ssr";
+import { GraduationCapIcon } from "@/components/ui/graduation-cap";
+import { StampIcon } from "@/components/ui/stamp";
+import { CookingPotIcon } from "@/components/ui/cooking-pot";
+import { UsersRoundIcon } from "@/components/ui/users-round";
 
 import { RevealGroup, RevealItem } from "@/components/site/reveal";
 
 const facts = [
-  { icon: GraduationCap, label: "Préscolaire au Lycée", detail: "4 cycles complets" },
-  { icon: Certificate, label: "Cambridge Assessment", detail: "Centre agréé" },
-  { icon: ForkKnife, label: "Cantine HACCP", detail: "450 élèves / service" },
-  { icon: UsersThree, label: "Suivi personnalisé", detail: "Familles & professeurs" },
+  { icon: GraduationCapIcon, label: "Préscolaire au Lycée", detail: "4 cycles complets" },
+  { icon: StampIcon, label: "Cambridge Assessment", detail: "Centre agréé" },
+  { icon: CookingPotIcon, label: "Cantine HACCP", detail: "450 élèves / service" },
+  { icon: UsersRoundIcon, label: "Suivi personnalisé", detail: "Familles & professeurs" },
 ];
 
 export function FactsStrip() {
@@ -19,7 +22,7 @@ export function FactsStrip() {
               key={fact.label}
               className="flex flex-col items-start gap-2.5 px-5 py-7 sm:px-6"
             >
-              <fact.icon weight="regular" className="size-6 text-primary" />
+              <fact.icon size={24} className="text-primary" />
               <p className="font-display text-[15px] font-medium leading-snug">
                 {fact.label}
               </p>

@@ -1,42 +1,39 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Quotes } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRightIcon } from "@/components/ui/arrow-right";
+import { MessageSquareIcon } from "@/components/ui/message-square";
 
 import { Reveal } from "@/components/site/reveal";
+import { VideoPlayer } from "@/components/site/video-player";
 import { Button } from "@/components/ui/button";
 import { presentationSections } from "@/lib/content";
 
 export function Director() {
   return (
-    <section className="py-20 sm:py-28">
-      <div className="container-page grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1fr] lg:gap-16">
-        <Reveal className="relative order-2 lg:order-1">
-          <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-[28px] sm:mx-auto lg:mx-0">
-            <Image
-              src="/images/directeur.jpg"
-              alt="Mot du directeur d'établissement, School Academy"
-              fill
-              sizes="(min-width: 1024px) 32vw, 80vw"
-              className="object-cover"
-            />
-          </div>
+    <section className="py-11 sm:py-14">
+      <div className="container-page flex flex-col gap-10">
+        <Reveal className="mx-auto w-full max-w-4xl">
+          <VideoPlayer
+            src="/media/mot-du-directeur.mp4"
+            poster="/images/directeur.jpg"
+            className="aspect-video w-full rounded-[28px]"
+          />
         </Reveal>
 
-        <Reveal delay={0.1} className="order-1 flex flex-col gap-6 lg:order-2">
-          <Quotes weight="fill" className="size-10 text-brand" />
-          <p className="font-display text-2xl font-medium leading-snug tracking-tight text-balance sm:text-3xl">
+        <Reveal delay={0.1} className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
+          <MessageSquareIcon size={32} className="text-brand" />
+          <p className="font-display text-xl font-medium leading-snug tracking-tight text-balance sm:text-2xl">
             {presentationSections.fondateurs.text}
           </p>
-          <div className="flex items-center gap-3 pt-2">
+          <div className="flex items-center gap-3 pt-1">
             <div className="h-px w-10 bg-primary" />
-            <p className="text-[14px] font-medium text-muted-foreground">
+            <p className="text-[13px] font-medium text-muted-foreground">
               Mot du directeur d&rsquo;établissement
             </p>
           </div>
-          <Button asChild variant="outline" className="mt-2 w-fit">
+          <Button asChild variant="outline" className="mt-1 w-fit">
             <Link href="/presentation">
               Lire notre présentation
-              <ArrowRight weight="bold" className="size-4" />
+              <ArrowRightIcon size={16} />
             </Link>
           </Button>
         </Reveal>

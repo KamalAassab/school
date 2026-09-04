@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { GraduationCap } from "@phosphor-icons/react";
+import { GraduationCapIcon } from "@/components/ui/graduation-cap";
 
 export function FloatingCta() {
   const pathname = usePathname();
@@ -33,8 +33,8 @@ export function FloatingCta() {
             href="/inscription"
             className="group flex items-center gap-2.5 rounded-full bg-primary py-3.5 pl-4 pr-5 text-[14px] font-semibold text-primary-foreground shadow-[0_12px_30px_-8px_rgba(184,67,0,0.55)] transition-transform active:scale-[0.97] sm:py-4 sm:pl-5 sm:pr-6"
           >
-            <GraduationCap weight="fill" className="size-5 shrink-0 text-brand" />
-            <span className="hidden sm:inline">S&rsquo;inscrire — 2025/2026</span>
+            <GraduationCapIcon size={20} className="shrink-0 text-brand" />
+            <span className="hidden sm:inline">S&rsquo;inscrire · 2026/2027</span>
             <span className="sm:hidden">S&rsquo;inscrire</span>
           </Link>
         </motion.div>

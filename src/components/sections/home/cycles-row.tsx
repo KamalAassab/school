@@ -1,20 +1,30 @@
 import Link from "next/link";
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right";
 
 import { SectionHeading } from "@/components/site/section-heading";
-import { RevealGroup, RevealItem } from "@/components/site/reveal";
+import { RevealGroup, RevealItem, Reveal } from "@/components/site/reveal";
+import { Illustration } from "@/components/site/illustration";
 import { cycles } from "@/lib/content";
 
 export function CyclesRow() {
   return (
-    <section className="bg-muted/60 py-20 sm:py-28">
-      <div className="container-page flex flex-col gap-12">
-        <SectionHeading
-          title="Un accompagnement pensé pour chaque âge"
-          description="Quatre cycles, une seule exigence : donner à chaque élève les moyens de réussir."
-        />
+    <section className="bg-muted/60 py-11 sm:py-14">
+      <div className="container-page flex flex-col gap-10">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <SectionHeading
+            title="Un accompagnement pensé pour chaque âge"
+            description="Quatre cycles, une seule exigence : donner à chaque élève les moyens de réussir."
+          />
+          <Reveal delay={0.1} className="mx-auto w-full max-w-sm lg:max-w-none">
+            <Illustration
+              src="/assets/undraw_graduation_u7uc.svg"
+              width={811}
+              height={304}
+            />
+          </Reveal>
+        </div>
 
-        <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {cycles.map((cycle, i) => (
             <RevealItem key={cycle.slug}>
               <Link
@@ -25,7 +35,10 @@ export function CyclesRow() {
                   <span className="font-display text-4xl font-medium text-primary/25">
                     0{i + 1}
                   </span>
-                  <ArrowUpRight className="size-5 -translate-y-1 translate-x-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:text-primary group-hover:opacity-100" />
+                  <ArrowUpRightIcon
+                    size={20}
+                    className="-translate-y-1 translate-x-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:text-primary group-hover:opacity-100"
+                  />
                 </div>
                 <div className="flex flex-col gap-2">
                   <h3 className="font-display text-lg font-medium tracking-tight">

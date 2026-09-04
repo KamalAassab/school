@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { CaretDown } from "@phosphor-icons/react";
+import { ChevronDownIcon } from "@/components/ui/chevron-down";
 
 import { cn } from "@/lib/utils";
 
@@ -35,15 +35,15 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "flex flex-1 items-center justify-between gap-4 py-6 text-left font-display text-lg font-medium tracking-tight transition-colors hover:text-primary [&[data-state=open]>svg]:rotate-180",
+          "group flex flex-1 items-center justify-between gap-4 py-6 text-left font-display text-lg font-medium tracking-tight transition-colors hover:text-primary",
           className
         )}
         {...props}
       >
         {children}
-        <CaretDown
-          weight="bold"
-          className="size-4 shrink-0 text-muted-foreground transition-transform duration-300"
+        <ChevronDownIcon
+          size={16}
+          className="shrink-0 text-muted-foreground transition-transform duration-300 group-data-[state=open]:rotate-180"
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>

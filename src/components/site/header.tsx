@@ -3,34 +3,34 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
-import { List, ArrowUpRight } from "@phosphor-icons/react";
+import { MenuIcon } from "@/components/ui/menu";
+import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right";
 
 import { Logo } from "@/components/site/logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import { mainNav, siteConfig } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const [scrolled, setScrolled] = React.useState(false);
+  const [hidden, setHidden] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const pathname = usePathname();
+  const lastY = React.useRef(0);
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    lastY.current = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 12);
+      setHidden(!open && y > lastY.current && y > 96);
+      lastY.current = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [open]);
 
   React.useEffect(() => {
     setOpen(false);
@@ -39,64 +39,45 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-background/85 backdrop-blur-lg border-b border-ink/[0.06]"
-          : "bg-background/0 border-b border-transparent"
+        "fixed inset-x-0 top-3 z-50 px-3 transition-transform duration-300 sm:top-4 sm:px-5 lg:px-8",
+        hidden ? "-translate-y-[calc(100%+2rem)]" : "translate-y-0"
       )}
     >
-      <div className="container-page flex h-20 items-center justify-between">
+      <div
+        className={cn(
+          "mx-auto flex h-16 w-full max-w-[1320px] items-center justify-between rounded-full border transition-all duration-300 sm:h-[68px]",
+          scrolled
+            ? "border-ink/[0.06] bg-background/95 px-3 shadow-[0_12px_35px_-18px_rgba(32,26,21,0.35)] backdrop-blur-lg sm:px-4"
+            : "border-transparent bg-background/70 px-3 backdrop-blur-md sm:px-4"
+        )}
+      >
         <Logo />
 
-        <NavigationMenu className="hidden lg:flex">
-          <NavigationMenuList>
-            {mainNav.map((item) =>
-              "children" in item && item.children ? (
-                <NavigationMenuItem key={item.label}>
-                  <NavigationMenuTrigger>{item.label}</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[380px] gap-1 p-3">
-                      {item.children.map((child) => (
-                        <li key={child.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={child.href}
-                              className="flex flex-col gap-1 rounded-xl px-4 py-3 transition-colors hover:bg-muted"
-                            >
-                              <span className="font-display text-[15px] font-medium">
-                                {child.label}
-                              </span>
-                              <span className="text-[13px] text-muted-foreground">
-                                {child.description}
-                              </span>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              ) : (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href={item.href}
-                      className="inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium text-foreground/80 transition-colors hover:bg-ink/[0.04] hover:text-foreground"
-                    >
-                      {item.label}
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              )
-            )}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <nav className="hidden items-center gap-1 lg:flex">
+          {mainNav.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium transition-colors",
+                  active
+                    ? "bg-ink/[0.06] text-foreground"
+                    : "text-foreground/70 hover:bg-ink/[0.04] hover:text-foreground"
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
           <Button asChild size="default" variant="default">
             <Link href="/inscription">
               Inscription {siteConfig.year}
-              <ArrowUpRight weight="bold" className="size-4" />
+              <ArrowUpRightIcon size={16} />
             </Link>
           </Button>
         </div>
@@ -107,7 +88,7 @@ export function Header() {
               className="flex size-11 items-center justify-center rounded-full text-foreground transition-colors hover:bg-ink/[0.06] lg:hidden"
               aria-label="Ouvrir le menu"
             >
-              <List weight="bold" className="size-5" />
+              <MenuIcon size={20} />
             </button>
           </SheetTrigger>
           <SheetContent>
@@ -118,27 +99,13 @@ export function Header() {
               </div>
               <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-6 py-2">
                 {mainNav.map((item) => (
-                  <div key={item.label} className="py-1">
-                    <Link
-                      href={item.href}
-                      className="block rounded-xl px-3 py-3 font-display text-lg font-medium text-foreground"
-                    >
-                      {item.label}
-                    </Link>
-                    {"children" in item && item.children ? (
-                      <div className="ml-3 flex flex-col border-l border-ink/[0.08] pl-4">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="py-2.5 text-[15px] text-muted-foreground"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block rounded-xl px-3 py-3 font-display text-lg font-medium text-foreground"
+                  >
+                    {item.label}
+                  </Link>
                 ))}
               </nav>
               <div className="border-t border-ink/[0.06] p-6">
@@ -150,12 +117,6 @@ export function Header() {
           </SheetContent>
         </Sheet>
       </div>
-      <motion.div
-        aria-hidden
-        initial={false}
-        animate={{ opacity: scrolled ? 1 : 0 }}
-        className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-ink/10 to-transparent"
-      />
     </header>
   );
 }

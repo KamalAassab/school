@@ -4,7 +4,8 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { PaperPlaneTilt, CheckCircle } from "@phosphor-icons/react";
+import { SendIcon } from "@/components/ui/send";
+import { CircleCheckIcon } from "@/components/ui/circle-check";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -83,11 +84,11 @@ export function ContactForm() {
       <div className="flex items-center gap-4 pt-2">
         <Button type="submit" size="lg" disabled={isSubmitting}>
           Envoyer le message
-          <PaperPlaneTilt weight="fill" className="size-4" />
+          <SendIcon size={16} />
         </Button>
         {sent ? (
           <span className="inline-flex items-center gap-1.5 text-[14px] font-medium text-primary">
-            <CheckCircle weight="fill" className="size-4" />
+            <CircleCheckIcon size={16} />
             Votre messagerie va s&rsquo;ouvrir
           </span>
         ) : null}

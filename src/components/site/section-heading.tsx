@@ -2,14 +2,12 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/site/reveal";
 
 export function SectionHeading({
-  eyebrow,
   title,
   description,
   align = "left",
   className,
   titleClassName,
 }: {
-  eyebrow?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   align?: "left" | "center";
@@ -24,11 +22,6 @@ export function SectionHeading({
         className
       )}
     >
-      {eyebrow ? (
-        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-          {eyebrow}
-        </span>
-      ) : null}
       <h2
         className={cn(
           "font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]",

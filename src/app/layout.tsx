@@ -23,12 +23,12 @@ const bricolage = Bricolage_Grotesque({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.tagline}`,
-    template: `%s — ${siteConfig.name}`,
+    default: `${siteConfig.name} · ${siteConfig.tagline}`,
+    template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
   openGraph: {
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    title: `${siteConfig.name} · ${siteConfig.tagline}`,
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -49,7 +49,7 @@ export default function RootLayout({
     <html lang="fr" className={`${jakarta.variable} ${bricolage.variable}`}>
       <body>
         <Header />
-        <main className="pt-20">{children}</main>
+        <main className="pt-[76px] sm:pt-[92px]">{children}</main>
         <Footer />
         <FloatingCta />
       </body>
