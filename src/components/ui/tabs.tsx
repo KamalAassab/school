@@ -16,12 +16,29 @@ function Tabs({ className, ...props }: React.ComponentProps<typeof TabsPrimitive
 }
 
 function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.List>) {
+  const listRef = React.useRef<HTMLDivElement>(null);
+  const [scrollable, setScrollable] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+    setScrollable(el.scrollWidth - el.clientWidth > 4);
+    const active = el.querySelector<HTMLElement>('[data-state="active"]');
+    active?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+  });
+
   return (
-    <div className="-mx-1 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div
+      ref={listRef}
+      className={cn(
+        "w-full max-w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:w-auto sm:overflow-visible",
+        scrollable && "scroll-fade-x"
+      )}
+    >
       <TabsPrimitive.List
         data-slot="tabs-list"
         className={cn(
-          "inline-flex w-fit min-w-full items-center gap-1 rounded-full bg-muted p-1.5 sm:min-w-0",
+          "inline-flex w-max items-center gap-1 rounded-full bg-muted p-1 sm:w-fit sm:min-w-0 sm:p-1.5",
           className
         )}
         {...props}

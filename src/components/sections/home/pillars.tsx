@@ -50,7 +50,7 @@ export function Pillars() {
             title="Tout ce qu&rsquo;il faut pour grandir, apprendre et s&rsquo;épanouir"
             description="Quatre piliers pensés ensemble, du premier jour au baccalauréat."
           />
-          <Reveal delay={0.1} className="mx-auto w-full max-w-xs lg:max-w-sm">
+          <Reveal delay={0.1} className="mx-auto w-full max-w-[240px] sm:max-w-xs lg:max-w-sm">
             <Illustration
               src="/assets/undraw_education_3vwh.svg"
               width={744}
@@ -59,13 +59,13 @@ export function Pillars() {
           </Reveal>
         </div>
 
-        <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {pillars.map((pillar) => (
             <RevealItem key={pillar.title}>
               <Link
                 href={pillar.href}
                 className={cn(
-                  "group flex h-full flex-col justify-between gap-10 rounded-[28px] p-6 transition-transform duration-300 hover:-translate-y-1",
+                  "group flex h-full flex-col justify-between gap-5 sm:gap-10 rounded-[22px] sm:rounded-[28px] p-4 sm:p-6 transition-transform duration-300 hover:-translate-y-1",
                   pillar.dark
                     ? "bg-ink text-background"
                     : "bg-muted text-foreground"
@@ -73,24 +73,24 @@ export function Pillars() {
               >
                 <div className="flex items-start justify-between">
                   <pillar.icon
-                    size={30}
-                    className={cn(pillar.dark ? "text-brand" : "text-primary")}
+                    size={26}
+                    className={cn("sm:size-[30px]", pillar.dark ? "text-brand" : "text-primary")}
                   />
                   <ArrowUpRightIcon
-                    size={18}
+                    size={16}
                     className={cn(
-                      "-translate-y-1 translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100",
+                      "-translate-y-1 translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100 sm:size-[18px]",
                       pillar.dark ? "text-background" : "text-foreground"
                     )}
                   />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-display text-lg font-medium tracking-tight">
+                <div className="flex flex-col gap-1 sm:gap-2">
+                  <h3 className="font-display text-base font-medium tracking-tight sm:text-lg">
                     {pillar.title}
                   </h3>
                   <p
                     className={cn(
-                      "text-[14px] leading-relaxed",
+                      "text-[12px] sm:text-[14px] leading-relaxed",
                       pillar.dark ? "text-background/60" : "text-muted-foreground"
                     )}
                   >

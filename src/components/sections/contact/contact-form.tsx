@@ -81,7 +81,7 @@ export function ContactForm() {
         />
       </FormField>
 
-      <div className="flex items-center gap-4 pt-2">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 text-center">
         <Button type="submit" size="lg" disabled={isSubmitting}>
           Envoyer le message
           <SendIcon size={16} />

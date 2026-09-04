@@ -46,11 +46,11 @@ export function FournituresDownload() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 border-t border-ink/[0.08] pt-6">
+      <div className="flex flex-col items-center text-center gap-3 border-t border-ink/[0.08] pt-6">
         <p className="text-[13px] font-medium text-muted-foreground">
           Nos partenaires libraires
         </p>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap justify-center gap-3">
           {fournituresSuppliers.map((s) => (
             <Link
               key={s.name}

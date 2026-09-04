@@ -4,6 +4,14 @@ import { CompassIcon } from "@/components/ui/compass";
 import { MessageSquareIcon } from "@/components/ui/message-square";
 import { SparklesIcon } from "@/components/ui/sparkles";
 import { ArrowRightIcon } from "@/components/ui/arrow-right";
+import { GraduationCapIcon } from "@/components/ui/graduation-cap";
+import { ShieldCheckIcon } from "@/components/ui/shield-check";
+import { FlaskIcon } from "@/components/ui/flask";
+import { MonitorCogIcon } from "@/components/ui/monitor-cog";
+import { BicepsFlexedIcon } from "@/components/ui/biceps-flexed";
+import { BlocksIcon } from "@/components/ui/blocks";
+import { BookTextIcon } from "@/components/ui/book-text";
+import { LayersIcon } from "@/components/ui/layers";
 import Link from "next/link";
 
 import { PageHero } from "@/components/sections/page-hero/page-hero";
@@ -29,6 +37,22 @@ import {
   conceptRessourcesHumaines,
   conceptTechniciens,
 } from "@/lib/content";
+
+const valeurIcons = [
+  GraduationCapIcon,
+  ShieldCheckIcon,
+  CompassIcon,
+  FlaskIcon,
+  MonitorCogIcon,
+  BicepsFlexedIcon,
+];
+
+const cycleIcons: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  prescolaire: BlocksIcon,
+  primaire: BookTextIcon,
+  college: LayersIcon,
+  lycee: GraduationCapIcon,
+};
 
 export const metadata: Metadata = {
   title: "Présentation",
@@ -60,10 +84,10 @@ export default function PresentationPage() {
           </Reveal>
           <Reveal delay={0.1} className="flex flex-col gap-6">
             <MessageSquareIcon size={40} className="text-brand" />
-            <h2 className="font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl">
+            <h2 className="font-display text-2xl font-medium tracking-tight text-balance sm:text-4xl">
               {presentationSections.fondateurs.title}
             </h2>
-            <p className="max-w-[54ch] text-[17px] leading-relaxed text-muted-foreground">
+            <p className="max-w-[54ch] text-[11px] leading-relaxed text-muted-foreground sm:text-[15px]">
               {presentationSections.fondateurs.text}
             </p>
           </Reveal>
@@ -77,17 +101,22 @@ export default function PresentationPage() {
             description={presentationSections.missions.text}
           />
           <RevealGroup className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-            {valeurs.map((valeur, i) => (
-              <RevealItem
-                key={i}
-                className="flex flex-col gap-3 rounded-2xl bg-white p-6"
-              >
-                <SparklesIcon size={24} className="text-primary" />
-                <p className="text-[14px] leading-relaxed text-foreground/85">
-                  {valeur.text}
-                </p>
-              </RevealItem>
-            ))}
+            {valeurs.map((valeur, i) => {
+              const Icon = valeurIcons[i] ?? SparklesIcon;
+              return (
+                <RevealItem
+                  key={i}
+                  className="flex flex-col gap-3 rounded-2xl bg-white p-6 shadow-xs border border-ink/[0.04]"
+                >
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon size={22} />
+                  </div>
+                  <p className="text-[14px] leading-relaxed text-foreground/85">
+                    {valeur.text}
+                  </p>
+                </RevealItem>
+              );
+            })}
           </RevealGroup>
         </div>
       </section>
@@ -162,15 +191,23 @@ export default function PresentationPage() {
               </AccordionItem>
             </Accordion>
             <RevealGroup className="grid grid-cols-2 gap-3">
-              {cycles.map((cycle) => (
-                <RevealItem
-                  key={cycle.slug}
-                  className="flex flex-col gap-1 rounded-2xl bg-secondary px-5 py-5"
-                >
-                  <span className="font-display text-base font-medium">{cycle.short}</span>
-                  <span className="text-[13px] text-secondary-foreground/70">{cycle.age}</span>
-                </RevealItem>
-              ))}
+              {cycles.map((cycle) => {
+                const Icon = cycleIcons[cycle.slug] ?? BookTextIcon;
+                return (
+                  <RevealItem
+                    key={cycle.slug}
+                    className="flex flex-col gap-2 rounded-2xl bg-secondary px-5 py-5 transition-transform duration-200 hover:-translate-y-0.5"
+                  >
+                    <div className="flex size-9 items-center justify-center rounded-xl bg-white/80 text-primary shadow-xs">
+                      <Icon size={18} />
+                    </div>
+                    <div className="flex flex-col gap-0.5 mt-1">
+                      <span className="font-display text-base font-medium">{cycle.short}</span>
+                      <span className="text-[13px] text-secondary-foreground/70">{cycle.age}</span>
+                    </div>
+                  </RevealItem>
+                );
+              })}
             </RevealGroup>
           </div>
         </div>
@@ -193,7 +230,7 @@ export default function PresentationPage() {
             </p>
           </Reveal>
 
-          <Accordion type="single" collapsible defaultValue={charteActeurs[0].id}>
+          <Accordion type="single" collapsible>
             {charteActeurs.map((acteur) => (
               <AccordionItem
                 key={acteur.id}

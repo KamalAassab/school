@@ -75,7 +75,7 @@ export default function RecrutementPage() {
                 le cycle qui vous intéressent. Notre équipe RH étudie chaque
                 candidature avec attention.
               </p>
-              <Button asChild variant="brand" className="w-fit">
+              <Button asChild variant="brand" className="w-fit self-center mx-auto">
                 <Link href={`mailto:${siteConfig.email}?subject=Candidature%20-%20Recrutement`}>
                   <MailboxIcon size={16} />
                   Envoyer ma candidature
@@ -84,7 +84,7 @@ export default function RecrutementPage() {
               <Button
                 asChild
                 variant="ghost"
-                className="w-fit text-background hover:bg-background/10"
+                className="w-fit self-center mx-auto text-background hover:bg-background/10"
               >
                 <Link href="/contact">
                   Nous contacter

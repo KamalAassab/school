@@ -79,7 +79,7 @@ export const cycles = [
     short: "Préscolaire",
     age: "3 – 5 ans",
     description:
-      "Communément appelé « la Maternelle », le préscolaire est le premier contact de l'enfant avec l'école : il y découvre un monde interactif aux côtés de nouveaux camarades, éducatrices, espaces et activités à connotation ludique, à travers les niveaux Petite, Moyenne et Grande sections.",
+      "La Maternelle : premier pas de votre enfant à l'école, dans un cadre ludique et bienveillant.",
     highlights: [
       "Petite, Moyenne et Grande sections",
       "Éveil sensoriel, langage et psychomotricité",
@@ -92,7 +92,7 @@ export const cycles = [
     short: "Primaire",
     age: "6 – 11 ans",
     description:
-      "Composé de six niveaux, le cycle primaire confronte l'apprenant à un véritable système d'évaluation (test diagnostique, contrôles continus et suivi pédagogique rapproché) pour consolider les fondamentaux et accompagner les familles à chaque étape.",
+      "Six niveaux pour construire les bases : lecture, calcul, langues, avec un suivi régulier de chaque élève.",
     highlights: [
       "6 niveaux, de CE1 à CE6",
       "Test diagnostique et suivi pédagogique continu",
@@ -105,7 +105,7 @@ export const cycles = [
     short: "Collège",
     age: "12 – 14 ans",
     description:
-      "Passage déterminant du cursus, le collège prend en compte les transformations physiques et cognitives de l'adolescent. Chaque matière y est enseignée par un professeur spécialisé, dans un programme à coefficients qui exige un suivi méthodique, à l'école comme à la maison.",
+      "Une étape clé de l'adolescence, avec un professeur spécialisé par matière et un suivi rapproché.",
     highlights: [
       "Enseignement CIOF habilité par le MEN",
       "Un professeur spécialisé par matière",
@@ -118,7 +118,7 @@ export const cycles = [
     short: "Lycée",
     age: "15 – 18 ans",
     description:
-      "Orienté vers l'acquisition des savoirs nécessaires au passage des examens nationaux, le cycle Lycée conjugue travail régulier et pics d'efforts ciblés sur les périodes d'examen, avec des séances d'orientation et de réorientation et des visites d'écoles supérieures.",
+      "Préparation solide au Bac, avec orientation et visites d'écoles supérieures pour préparer l'avenir.",
     highlights: [
       "Enseignement BIOF habilité par le MEN",
       "Branches Sciences Math, Sc. Exp. et Économie",
@@ -234,31 +234,31 @@ export const pedagogieSections = [
     id: "tice",
     title: "TICE",
     subtitle: "Technologies de l'information et de la communication",
-    text: "School Academy se veut un établissement précurseur en matière de Technologies de l'Information et de la Communication pour l'Enseignement (TICE). Toutes les classes sont équipées de Tableaux Blancs Interactifs (TBI) de marque premium. Et ce n'est qu'un début : un plan de restructuration du cycle maternelle est actuellement à l'étude pour l'acquisition de tables interactives et de cartables numériques (sous forme de tablettes) pour les cycles supérieurs.",
+    text: "Toutes nos classes sont équipées de tableaux interactifs. Objectif : des cours plus vivants, du préscolaire au lycée.",
   },
   {
     id: "orientation",
     title: "Orientation",
     subtitle: "Un accompagnement construit dans la durée",
-    text: "Notre établissement accompagne ses élèves tout au long de leur scolarité. Dès la 3ème année collégiale, des rencontres sont organisées entre élèves, parents, inspecteurs et conseillers d'orientation, un suivi qui se poursuit au lycée, en Tronc Commun puis en 1ère et 2ème année Baccalauréat. Au lycée, seules les branches scientifiques (Sciences Mathématiques, Sciences Expérimentales option Physique-Chimie) et technique (Économie) sont proposées.",
+    text: "Dès la 3ème collège, des rencontres avec des conseillers aident chaque élève à choisir sa voie, jusqu'au Bac.",
   },
   {
     id: "projet",
     title: "Projet d'établissement",
     subtitle: "Multiplicité, diversité, construction",
-    text: "Le projet d'établissement vise l'atteinte d'objectifs pédagogiques et civiques, en mobilisant toute la communauté éducative autour d'une ambition commune : donner à chaque élève les moyens de réussir et de s'épanouir.",
+    text: "Toute l'équipe éducative unie autour d'un seul but : donner à chaque élève les moyens de réussir.",
   },
   {
     id: "jumelage",
     title: "Jumelage à l'international",
     subtitle: "Ouvrir les élèves sur le monde",
-    text: "School Academy est fière de porter les couleurs du Maroc à l'international. Un jumelage a été noué avec l'établissement Ernest Gabard, à Jurançon près de Pau (France), à travers lequel les deux établissements mènent des échanges culturels et éducatifs. Le processus se concrétise par le voyage de nos élèves au sein de l'établissement partenaire, pour un séjour éducatif, ludique et linguistique accompagné par des cadres de leur établissement.",
+    text: "Un partenariat avec l'école Ernest Gabard, en France, pour des échanges culturels et un séjour linguistique.",
   },
   {
     id: "rencontres",
     title: "Rencontre parents / profs",
     subtitle: "Un dialogue régulier et transparent",
-    text: "La communication est la base d'une bonne relation entre parents, établissement et professeurs. Après l'évaluation diagnostique, une rencontre parents-professeurs est organisée pour discuter de la méthodologie adaptée à l'année scolaire. Les parents restent par ailleurs libres de prendre rendez-vous à tout moment pour échanger plus longuement sur les difficultés rencontrées par leur enfant.",
+    text: "Une rencontre est organisée après l'évaluation diagnostique, et les parents peuvent solliciter un rendez-vous à tout moment.",
   },
 ] as const;
 
@@ -272,7 +272,7 @@ export const projetConcepts = [
   {
     id: "multiplicite",
     title: "Multiplicité",
-    text: "La multiplicité des espaces que notre établissement peut offrir : grâce à son grand espace, plusieurs salles et lieux spécialisés répondent à toutes les envies périscolaires qui contribuent au développement de nos enfants.",
+    text: "Un grand campus avec des espaces spécialisés pour chaque activité, en classe comme en dehors.",
     items: [
       "Salles de classe équipées de tableaux interactifs",
       "Laboratoires scientifiques",
@@ -294,13 +294,13 @@ export const projetConcepts = [
   {
     id: "diversite",
     title: "Diversité",
-    text: "La diversification des méthodes d'enseignement fait partie de notre stratégie : à la méthode classique s'ajoutent des outils didactiques modernes, les tableaux interactifs présents dans toutes les classes, l'enseignement par l'environnement (qui confronte les enfants à leur environnement extérieur) et le Serious Game, une animation ludique du cours particulièrement appréciée des élèves.",
+    text: "Méthode classique, tableaux interactifs et jeux pédagogiques : plusieurs approches pour mieux apprendre.",
     items: [],
   },
   {
     id: "construction",
     title: "Construction",
-    text: "La construction de la personne de l'enfant est au cœur de nos intérêts. Au-delà de la transmission d'un savoir, il s'agit d'édifier une personnalité : posture, prestance, confiance en soi, politesse, franc-parler, culture générale, fluidité du langage.",
+    text: "Au-delà du savoir, nous formons des personnalités : confiance en soi, politesse et aisance à l'oral.",
     items: [],
   },
 ] as const;
@@ -308,7 +308,7 @@ export const projetConcepts = [
 export const projetAxes = [
   {
     title: "La vie de l'enfant, à l'école et à l'extérieur",
-    text: "Favoriser l'environnement macro de l'enfant : un cadre propice à l'apprentissage, un flux d'information constant avec les parents, une exposition régulée aux milieux à risque et un équilibre entre travail, jeux, repos et réflexion.",
+    text: "Un cadre sain, une communication régulière avec les parents et un bon équilibre entre travail et repos.",
   },
   {
     title: "Amélioration constante des résultats",

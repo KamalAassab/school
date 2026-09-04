@@ -3,7 +3,15 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-export function Logo({ className, dark = false }: { className?: string; dark?: boolean }) {
+export function Logo({
+  className,
+  dark = false,
+  showText = true,
+}: {
+  className?: string;
+  dark?: boolean;
+  showText?: boolean;
+}) {
   return (
     <Link
       href="/"
@@ -16,12 +24,17 @@ export function Logo({ className, dark = false }: { className?: string; dark?: b
         width={40}
         height={44}
         priority
-        className="h-10 w-auto"
+        className="h-10 w-auto shrink-0"
       />
-      <span className="flex flex-col leading-none">
+      <span
+        className={cn(
+          "flex flex-col leading-none overflow-hidden transition-all duration-300",
+          showText ? "max-w-[220px] opacity-100" : "max-w-0 opacity-0"
+        )}
+      >
         <span
           className={cn(
-            "font-display text-[17px] font-semibold tracking-tight",
+            "whitespace-nowrap font-display text-[17px] font-semibold tracking-tight",
             dark ? "text-background" : "text-foreground"
           )}
         >
@@ -29,7 +42,7 @@ export function Logo({ className, dark = false }: { className?: string; dark?: b
         </span>
         <span
           className={cn(
-            "text-[11px] tracking-wide",
+            "whitespace-nowrap text-[11px] tracking-wide",
             dark ? "text-background/55" : "text-muted-foreground"
           )}
         >

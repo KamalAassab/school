@@ -26,10 +26,12 @@ export function Canteen() {
         </Reveal>
 
         <Reveal delay={0.1} className="order-1 flex flex-col gap-6 lg:order-2">
-          <ShieldCheckIcon size={36} className="text-primary" />
-          <h2 className="font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl">
-            {cantine.title}, une exigence de qualité
-          </h2>
+          <div className="flex items-center gap-3 sm:gap-3.5">
+            <ShieldCheckIcon size={32} className="shrink-0 text-primary sm:size-9" />
+            <h2 className="font-display text-xl font-medium tracking-tight text-balance sm:text-2xl lg:text-3xl">
+              {cantine.title}, une exigence de qualité
+            </h2>
+          </div>
           <p className="max-w-[54ch] text-[17px] leading-relaxed text-muted-foreground">
             {cantine.text}
           </p>
@@ -41,7 +43,7 @@ export function Canteen() {
               </div>
             ))}
           </dl>
-          <Button asChild variant="outline" className="mt-2 w-fit">
+          <Button asChild variant="outline" className="mt-2 w-fit self-center mx-auto">
             <Link href="/vie-scolaire#cantine">
               Découvrir la vie scolaire
               <ArrowRightIcon size={16} />

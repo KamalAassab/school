@@ -23,7 +23,7 @@ function DropdownTrigger({
     <SelectPrimitive.Trigger
       data-slot="dropdown-trigger"
       className={cn(
-        "group flex h-13 w-full items-center justify-between gap-2 rounded-xl border border-input bg-white px-4 text-[15px] text-foreground outline-none transition-colors data-[placeholder]:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/15 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:ring-destructive/15",
+        "group flex h-14 w-full items-center justify-between gap-3 rounded-full border border-ink/15 bg-white px-6 text-[15px] font-medium tracking-tight text-foreground outline-none transition-all duration-200 hover:border-ink/30 hover:bg-ink/[0.01] data-[placeholder]:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/15 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:ring-destructive/15",
         className
       )}
       {...props}
@@ -33,7 +33,7 @@ function DropdownTrigger({
       </span>
       <SelectPrimitive.Icon asChild>
         <ChevronDownIcon
-          size={16}
+          size={18}
           className="shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180"
         />
       </SelectPrimitive.Icon>

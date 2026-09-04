@@ -27,7 +27,7 @@ export function SegmentedToggle({
           aria-checked={value === option.value}
           onClick={() => onChange(option.value)}
           className={cn(
-            "flex h-full flex-1 items-center justify-center rounded-lg text-[14px] font-medium transition-colors duration-150",
+            "flex h-full flex-1 items-center justify-center rounded-xl text-[14px] font-medium transition-colors duration-150",
             value === option.value
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground"

@@ -24,8 +24,8 @@ export function CambridgeSeal() {
           />
         </Reveal>
 
-        <Reveal delay={0.1} className="flex flex-col gap-4">
-          <div className="flex flex-col gap-1">
+        <Reveal delay={0.1} className="flex flex-col items-center text-center gap-4">
+          <div className="flex flex-col items-center text-center gap-1">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">
               Cambridge Assessment English
             </h2>
@@ -33,14 +33,14 @@ export function CambridgeSeal() {
               Authorised Exam Centre
             </p>
           </div>
-          <p className="max-w-[56ch] text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
+          <p className="mx-auto max-w-[56ch] text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
             Notre établissement se veut une école ouverte sur les langues avec une
             distinction pour l&rsquo;Anglais. À cet effet, notre motivation combinée
             avec l&rsquo;expérience et l&rsquo;accompagnement de Calliope, référence
             linguistique certaine, se manifeste par une collaboration portant le nom
             de Cambridge Assessment English et qui se traduit comme suit :
           </p>
-          <div className="flex flex-wrap gap-2.5 pt-1">
+          <div className="flex flex-wrap justify-center gap-2.5 pt-1">
             {cambridgeLevels.map((level, i) => {
               const Icon = levelIcons[i % levelIcons.length];
               return (

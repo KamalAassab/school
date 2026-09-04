@@ -15,26 +15,21 @@ export function Footer() {
   return (
     <footer className="bg-[#fdf8f0] text-foreground">
       <div className="container-page flex flex-col gap-10 pt-12 pb-8 sm:pt-14 sm:pb-10">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
-          <div className="flex flex-col gap-4">
-            <Link href="/" className="flex items-center gap-3" aria-label="School Academy">
+        {/* Top section: brand column + nav columns */}
+        <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
+          {/* Brand / contact column */}
+          <div className="flex flex-col gap-5 lg:w-72 lg:shrink-0">
+            <Link href="/" className="flex justify-center" aria-label="School Academy, accueil">
               <Image
                 src="/logo.svg"
                 alt="School Academy"
-                width={36}
-                height={40}
-                className="h-9 w-auto"
+                width={96}
+                height={106}
+                className="h-24 w-auto"
               />
-              <span className="font-display text-[17px] font-semibold text-foreground">
-                School Academy
-              </span>
             </Link>
-            <p className="text-[15px] leading-relaxed text-muted-foreground">
-              {siteConfig.tagline}, école privée du préscolaire au lycée, centre agréé
-              Cambridge Assessment English.
-            </p>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2.5">
               <Link
                 href={`mailto:${siteConfig.email}`}
                 className="inline-flex items-center gap-2 text-[14px] text-foreground/85 transition-colors hover:text-primary"
@@ -63,7 +58,7 @@ export function Footer() {
               </Link>
             </div>
 
-            <ul className="flex items-center gap-2">
+            <ul className="flex items-center justify-center gap-2.5">
               <li>
                 <Link
                   href={siteConfig.social.facebook}
@@ -72,7 +67,7 @@ export function Footer() {
                   aria-label="School Academy sur Facebook"
                   className="flex size-10 items-center justify-center rounded-full bg-muted text-foreground/70 transition-colors hover:bg-secondary hover:text-primary"
                 >
-                  <FacebookIcon size={18} />
+                  <FacebookIcon size={20} />
                 </Link>
               </li>
               <li>
@@ -99,50 +94,49 @@ export function Footer() {
               </li>
             </ul>
 
-            <div className="mt-1 rounded-2xl bg-muted p-4">
-              <NewsletterForm />
-            </div>
+            <NewsletterForm />
           </div>
 
-          <div className="relative min-h-[200px] overflow-hidden rounded-[28px] lg:min-h-0">
-            <iframe
-              src={siteConfig.mapUrl}
-              title="School Academy sur la carte"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="size-full min-h-[200px] border-0 lg:min-h-full"
-            />
-            {/* Blocks drag/scroll interaction so the embed reads as a static preview; opens the real map instead */}
-            <Link
-              href={siteConfig.mapLink}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Ouvrir l'itinéraire vers School Academy dans Google Maps"
-              className="absolute inset-0"
-            />
+          {/* Nav columns */}
+          <div className="grid w-full grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-4">
+            {footerNav.map((col) => (
+              <div key={col.title} className="flex flex-col gap-3">
+                <h3 className="font-display text-[15px] font-medium text-foreground">
+                  {col.title}
+                </h3>
+                <ul className="flex flex-col gap-2">
+                  {col.links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-[14px] text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="grid w-full grid-cols-2 gap-6 sm:grid-cols-4">
-          {footerNav.map((col) => (
-            <div key={col.title} className="flex flex-col gap-3">
-              <h3 className="font-display text-[15px] font-medium text-foreground">
-                {col.title}
-              </h3>
-              <ul className="flex flex-col gap-2">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-[14px] text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        {/* Map */}
+        <div className="relative h-[280px] w-full overflow-hidden rounded-[28px] sm:h-[340px]">
+          <iframe
+            src={siteConfig.mapUrl}
+            title="School Academy sur la carte"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="size-full border-0"
+          />
+          <Link
+            href={siteConfig.mapLink}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Ouvrir l'itinéraire vers School Academy dans Google Maps"
+            className="absolute inset-0"
+          />
         </div>
 
         <div className="flex flex-col items-start justify-between gap-6 border-t border-ink/[0.08] pt-6 sm:flex-row sm:items-center">
@@ -157,6 +151,22 @@ export function Footer() {
             <ArrowUpRightIcon size={14} />
           </Link>
         </div>
+
+        <p className="text-center text-[12.5px] text-muted-foreground/60">
+          Fait avec{" "}
+          <span aria-hidden className="text-primary">
+            ♥
+          </span>{" "}
+          par{" "}
+          <Link
+            href="https://kamal-aassab.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-foreground/70 underline decoration-ink/20 underline-offset-2 transition-colors hover:text-primary"
+          >
+            Kamal Aassab
+          </Link>
+        </p>
       </div>
 
       <div className="relative h-[70px] w-full overflow-hidden sm:h-[100px]">

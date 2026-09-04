@@ -6,11 +6,16 @@ import { cambridgeLevels } from "@/lib/content";
 
 export function LevelsExplorer() {
   return (
-    <Tabs defaultValue={cambridgeLevels[0].code} className="items-start">
-      <TabsList>
+    <Tabs defaultValue={cambridgeLevels[0].code} className="w-full items-start">
+      <TabsList className="grid w-full grid-cols-5 p-1 gap-1 sm:inline-flex sm:w-auto sm:p-1.5 sm:gap-1">
         {cambridgeLevels.map((level) => (
-          <TabsTrigger key={level.code} value={level.code}>
-            {level.code}
+          <TabsTrigger
+            key={level.code}
+            value={level.code}
+            className="w-full min-w-0 px-1 text-[11px] font-medium sm:w-auto sm:px-5 sm:text-sm"
+          >
+            <span className="sm:hidden">{level.code.replace(/^YLE\s+/, "")}</span>
+            <span className="hidden sm:inline">{level.code}</span>
           </TabsTrigger>
         ))}
       </TabsList>

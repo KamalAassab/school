@@ -31,7 +31,7 @@ export function CtaBand({
             "relative overflow-hidden rounded-[32px] bg-[#fdf8f0]",
             videoSrc
               ? "grid grid-cols-1 items-center gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_1.1fr] lg:gap-10 lg:p-10"
-              : "px-8 py-16 text-center sm:px-16 sm:py-20"
+              : "px-6 py-10 text-center sm:px-16 sm:py-20"
           )}
         >
           <div
@@ -66,14 +66,14 @@ export function CtaBand({
                 {description}
               </p>
             ) : null}
-            <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-              <Button asChild size="lg" variant="default">
+            <div className="flex flex-row items-center gap-2 sm:gap-3 pt-2 w-full sm:w-auto">
+              <Button asChild size="lg" variant="default" className="flex-1 sm:flex-initial h-12 px-3 text-xs sm:h-14 sm:px-8 sm:text-base whitespace-nowrap">
                 <Link href={primaryHref}>
                   {primaryLabel}
                   <ArrowRightIcon size={16} />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="lg" variant="outline" className="flex-1 sm:flex-initial h-12 px-3 text-xs sm:h-14 sm:px-8 sm:text-base whitespace-nowrap">
                 <Link href={secondaryHref}>{secondaryLabel}</Link>
               </Button>
             </div>

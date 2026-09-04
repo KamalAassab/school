@@ -20,16 +20,18 @@ export function CambridgeHighlight() {
     <section className="overflow-hidden py-11 sm:py-14">
       <div className="container-page grid grid-cols-1 items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-10">
         <Reveal className="flex flex-col gap-6">
-          <StampIcon size={40} className="text-primary" />
-          <h2 className="font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl">
-            Un centre d&rsquo;examen agréé, au cœur de l&rsquo;établissement
-          </h2>
+          <div className="flex items-center gap-3 sm:gap-3.5">
+            <StampIcon size={32} className="shrink-0 text-primary sm:size-9" />
+            <h2 className="font-display text-xl font-medium tracking-tight text-balance sm:text-2xl lg:text-3xl">
+              Un centre d&rsquo;examen agréé, au cœur de l&rsquo;établissement
+            </h2>
+          </div>
           <p className="max-w-[52ch] text-[17px] leading-relaxed text-muted-foreground">
             Ouverte sur les langues avec une distinction pour l&rsquo;anglais, School
             Academy est Authorised Exam Centre Cambridge Assessment English, du
             premier niveau Young Learners jusqu&rsquo;au PET.
           </p>
-          <Button asChild variant="outline" className="w-fit">
+          <Button asChild variant="outline" className="w-fit self-center mx-auto">
             <Link href="/cambridge">
               Voir les niveaux Cambridge
               <ArrowRightIcon size={16} />

@@ -55,9 +55,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${jakarta.variable} ${bricolage.variable}`}>
-      <body>
+      <body className="flex min-h-screen flex-col">
         <Header />
-        <main className="pt-[76px] sm:pt-[92px]">{children}</main>
+        <main className="flex-1 overflow-x-clip">{children}</main>
         <Footer />
         <FloatingCta />
       </body>

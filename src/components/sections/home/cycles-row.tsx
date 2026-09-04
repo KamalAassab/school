@@ -15,7 +15,7 @@ export function CyclesRow() {
             title="Un accompagnement pensé pour chaque âge"
             description="Quatre cycles, une seule exigence : donner à chaque élève les moyens de réussir."
           />
-          <Reveal delay={0.1} className="mx-auto w-full max-w-sm lg:max-w-none">
+          <Reveal delay={0.1} className="mx-auto w-full max-w-[260px] sm:max-w-sm lg:max-w-none">
             <Illustration
               src="/assets/undraw_graduation_u7uc.svg"
               width={811}

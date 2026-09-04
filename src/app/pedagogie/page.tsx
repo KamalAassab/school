@@ -55,7 +55,7 @@ export default function PedagogiePage() {
               title="Nos cycles d'enseignement"
               description="Explorez le programme et les temps forts de chaque cycle."
             />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-[220px] lg:max-w-[240px]">
+            <Reveal delay={0.1} className="mx-auto w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[240px]">
               <Illustration
                 src="/assets/undraw_studying-science_kk9e.svg"
                 width={960}
@@ -73,22 +73,22 @@ export default function PedagogiePage() {
             <SectionHeading
               title="Le numérique et l'orientation, au service des apprentissages"
             />
-            <Reveal delay={0.1} className="relative mx-auto flex w-full max-w-xs items-center justify-center">
-              <div className="relative aspect-[4/3] w-[62%] overflow-hidden rounded-2xl shadow-[0_20px_45px_-15px_rgba(32,26,21,0.3)]">
+            <Reveal delay={0.1} className="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-md mx-auto">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-[0_12px_32px_-10px_rgba(32,26,21,0.2)]">
                 <Image
                   src="/images/pedagogie/tice-tbi.jpg"
                   alt="Tableau blanc interactif, cycle maternelle School Academy"
                   fill
-                  sizes="220px"
+                  sizes="(min-width: 640px) 240px, 45vw"
                   className="object-cover"
                 />
               </div>
-              <div className="relative -ml-10 aspect-[4/3] w-[62%] overflow-hidden rounded-2xl shadow-[0_20px_45px_-15px_rgba(32,26,21,0.3)]">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-[0_12px_32px_-10px_rgba(32,26,21,0.2)]">
                 <Image
                   src="/images/pedagogie/tice-table.jpg"
                   alt="Table interactive tactile, School Academy"
                   fill
-                  sizes="220px"
+                  sizes="(min-width: 640px) 240px, 45vw"
                   className="object-cover"
                 />
               </div>
@@ -209,7 +209,7 @@ export default function PedagogiePage() {
               title="Ouverts sur le monde, proches des familles"
               className="[&_h2]:text-background [&_p]:text-background/60"
             />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-sm lg:max-w-none">
+            <Reveal delay={0.1} className="mx-auto w-full max-w-[240px] sm:max-w-sm lg:max-w-none">
               <Illustration
                 src="/assets/undraw_road-to-knowledge_ufma.svg"
                 width={960}

@@ -55,7 +55,7 @@ export default function VieScolairePage() {
             <p className="max-w-[54ch] text-[17px] leading-relaxed text-muted-foreground">
               {cantine.text}
             </p>
-            <Button asChild variant="outline" className="w-fit">
+            <Button asChild variant="outline" className="w-fit self-center mx-auto">
               <Link href="/contact">
                 Poser une question
                 <ArrowRightIcon size={16} />
@@ -72,7 +72,7 @@ export default function VieScolairePage() {
               title="Des espaces dédiés à chaque activité"
               description="De la lecture au sport, chaque élève trouve un lieu pour progresser et s'épanouir."
             />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-xs">
+            <Reveal delay={0.1} className="mx-auto w-full max-w-[220px] sm:max-w-xs">
               <Illustration
                 src="/assets/undraw_book-lover_m9n3.svg"
                 width={800}

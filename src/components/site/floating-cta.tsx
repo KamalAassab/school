@@ -34,7 +34,7 @@ export function FloatingCta() {
             aria-label="S&rsquo;inscrire pour l&rsquo;année 2026/2027"
             className="group flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_12px_30px_-8px_rgba(184,67,0,0.55)] transition-transform active:scale-[0.97] sm:w-auto sm:gap-2.5 sm:px-6"
           >
-            <GraduationCapIcon size={20} className="shrink-0 text-brand" />
+            <GraduationCapIcon size={20} className="shrink-0 text-white" />
             <span className="hidden text-[14px] font-semibold sm:inline">
               S&rsquo;inscrire · 2026/2027
             </span>

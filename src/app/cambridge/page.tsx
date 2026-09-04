@@ -66,7 +66,7 @@ export default function CambridgePage() {
         <div className="container-page flex flex-col gap-8">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
             <SectionHeading title="Une collaboration qui fait la différence" />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-xs">
+            <Reveal delay={0.1} className="mx-auto w-full max-w-[220px] sm:max-w-xs">
               <Illustration
                 src="/assets/undraw_educator_6dgp.svg"
                 width={851}
