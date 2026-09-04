@@ -27,15 +27,17 @@ export function FloatingCta() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 16, scale: 0.9 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-6 right-5 z-40 sm:bottom-8 sm:right-8"
+          className="fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-40 sm:right-8 sm:bottom-8"
         >
           <Link
             href="/inscription"
-            className="group flex items-center gap-2.5 rounded-full bg-primary py-3.5 pl-4 pr-5 text-[14px] font-semibold text-primary-foreground shadow-[0_12px_30px_-8px_rgba(184,67,0,0.55)] transition-transform active:scale-[0.97] sm:py-4 sm:pl-5 sm:pr-6"
+            aria-label="S&rsquo;inscrire pour l&rsquo;année 2026/2027"
+            className="group flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_12px_30px_-8px_rgba(184,67,0,0.55)] transition-transform active:scale-[0.97] sm:w-auto sm:gap-2.5 sm:px-6"
           >
             <GraduationCapIcon size={20} className="shrink-0 text-brand" />
-            <span className="hidden sm:inline">S&rsquo;inscrire · 2026/2027</span>
-            <span className="sm:hidden">S&rsquo;inscrire</span>
+            <span className="hidden text-[14px] font-semibold sm:inline">
+              S&rsquo;inscrire · 2026/2027
+            </span>
           </Link>
         </motion.div>
       ) : null}

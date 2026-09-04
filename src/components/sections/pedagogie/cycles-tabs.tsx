@@ -31,7 +31,7 @@ function ScheduleTable({ slug }: { slug: string }) {
   if (!schedule) return null;
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-ink/[0.08] bg-white">
+    <div className="no-scrollbar scroll-fade-x overflow-x-auto rounded-2xl border border-ink/[0.08] bg-white">
       <table className="w-full min-w-[640px] border-collapse text-[13px]">
         <thead>
           <tr>

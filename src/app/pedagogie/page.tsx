@@ -180,7 +180,7 @@ export default function PedagogiePage() {
               description="Les fondements de notre stratégie pédagogique et civique, année après année."
               className="items-center text-center"
             />
-            <RevealGroup className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+            <RevealGroup className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
               {projetAxes.map((axe, i) => (
                 <RevealItem
                   key={axe.title}

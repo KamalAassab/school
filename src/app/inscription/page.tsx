@@ -73,7 +73,7 @@ export default function InscriptionPage() {
             title="Comment inscrire votre enfant"
             description="Quatre étapes simples pour rejoindre School Academy."
           />
-          <RevealGroup className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {inscriptionSteps.map((step, i) => (
               <RevealItem
                 key={step.title}

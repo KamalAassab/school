@@ -76,7 +76,7 @@ export default function PresentationPage() {
             title={presentationSections.missions.title}
             description={presentationSections.missions.text}
           />
-          <RevealGroup className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+          <RevealGroup className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
             {valeurs.map((valeur, i) => (
               <RevealItem
                 key={i}
