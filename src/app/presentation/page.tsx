@@ -72,13 +72,13 @@ export default function PresentationPage() {
       <section id="fondateurs" className="scroll-mt-24 py-12 sm:py-16">
         <div className="container-page grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1fr] lg:gap-16">
           <Reveal className="relative">
-            <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-[28px] sm:mx-auto lg:mx-0">
+            <div className="img-zoom-wrap relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-[28px] sm:mx-auto lg:mx-0">
               <Image
                 src="/images/directeur.webp"
                 alt="Directeur d'établissement, School Academy"
                 fill
                 sizes="(min-width: 1024px) 32vw, 80vw"
-                className="object-cover"
+                className="img-zoom object-cover"
               />
             </div>
           </Reveal>

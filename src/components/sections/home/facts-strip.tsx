@@ -20,9 +20,9 @@ export function FactsStrip() {
           {facts.map((fact) => (
             <RevealItem
               key={fact.label}
-              className="flex flex-col items-start gap-2.5 px-5 py-7 sm:px-6"
+              className="group flex flex-col items-start gap-2.5 px-5 py-7 transition-colors duration-200 hover:bg-muted/60 sm:px-6"
             >
-              <fact.icon size={24} className="text-primary" />
+              <fact.icon size={24} className="text-primary transition-transform duration-300 group-hover:scale-110" />
               <p className="font-display text-[15px] font-medium leading-snug">
                 {fact.label}
               </p>

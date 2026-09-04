@@ -118,14 +118,14 @@ export function Hero() {
             className="absolute -right-4 -top-5 size-[88%] rotate-[4deg] rounded-[32px] bg-secondary sm:-right-6 sm:-top-6"
           />
 
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] sm:aspect-[5/5.2] lg:aspect-[4/4.6]">
+          <div className="img-zoom-wrap relative aspect-[4/5] w-full overflow-hidden rounded-[28px] sm:aspect-[5/5.2] lg:aspect-[4/4.6]">
             <Image
               src="/images/eleves-hero.webp"
               alt="Élèves de School Academy"
               fill
               priority
               sizes="(min-width: 1024px) 40vw, 90vw"
-              className="object-cover"
+              className="img-zoom object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
           </div>

@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Illustration } from "@/components/site/illustration";
 import { cn } from "@/lib/utils";
 import { cycles, cycleSchedules } from "@/lib/content";
+import { storage } from "@/lib/storage";
 
 const slugs = cycles.map((c) => c.slug) as string[];
 
@@ -264,6 +265,8 @@ function MobileScheduleModal({
   );
 }
 
+const STORAGE_KEY = "pedagogie:activeTab";
+
 export function CyclesTabs() {
   const [value, setValue] = React.useState<string>(cycles[0].slug);
   const rootRef = React.useRef<HTMLDivElement>(null);
@@ -275,12 +278,20 @@ export function CyclesTabs() {
       requestAnimationFrame(() => {
         rootRef.current?.scrollIntoView({ block: "start" });
       });
+    } else {
+      const saved = storage.get(STORAGE_KEY);
+      if (saved && slugs.includes(saved)) setValue(saved);
     }
   }, []);
 
+  function handleTabChange(next: string) {
+    setValue(next);
+    storage.set(STORAGE_KEY, next);
+  }
+
   return (
     <div ref={rootRef} className="scroll-mt-24">
-      <Tabs value={value} onValueChange={setValue} className="items-start">
+      <Tabs value={value} onValueChange={handleTabChange} className="items-start">
         <TabsList>
           {cycles.map((cycle) => (
             <TabsTrigger key={cycle.slug} value={cycle.slug}>

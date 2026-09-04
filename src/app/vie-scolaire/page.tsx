@@ -38,13 +38,13 @@ export default function VieScolairePage() {
       <section id="cantine" className="scroll-mt-24 py-12 sm:py-16">
         <div className="container-page grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
           <Reveal className="relative order-2 lg:order-1">
-            <div className="relative aspect-[4/3.1] w-full overflow-hidden rounded-[28px]">
+            <div className="img-zoom-wrap relative aspect-[4/3.1] w-full overflow-hidden rounded-[28px]">
               <Image
                 src="/images/cantine.webp"
                 alt="Cantine School Academy"
                 fill
                 sizes="(min-width: 1024px) 48vw, 90vw"
-                className="object-cover"
+                className="img-zoom object-cover"
               />
             </div>
           </Reveal>

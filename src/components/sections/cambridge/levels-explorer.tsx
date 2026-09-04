@@ -1,12 +1,30 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cambridgeLevels } from "@/lib/content";
+import { storage } from "@/lib/storage";
+
+const STORAGE_KEY = "cambridge:activeLevel";
 
 export function LevelsExplorer() {
+  const [activeLevel, setActiveLevel] = useState<string>(cambridgeLevels[0].code);
+
+  useEffect(() => {
+    const saved = storage.get(STORAGE_KEY);
+    if (saved && cambridgeLevels.some((l) => l.code === saved)) {
+      setActiveLevel(saved);
+    }
+  }, []);
+
+  function handleChange(value: string) {
+    setActiveLevel(value);
+    storage.set(STORAGE_KEY, value);
+  }
+
   return (
-    <Tabs defaultValue={cambridgeLevels[0].code} className="w-full items-start">
+    <Tabs value={activeLevel} onValueChange={handleChange} className="w-full items-start">
       <TabsList className="grid w-full grid-cols-5 p-1 gap-1 sm:inline-flex sm:w-auto sm:p-1.5 sm:gap-1">
         {cambridgeLevels.map((level) => (
           <TabsTrigger

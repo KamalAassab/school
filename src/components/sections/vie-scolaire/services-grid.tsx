@@ -28,16 +28,16 @@ export function ServicesGrid() {
           <RevealItem
             key={item.id}
             id={item.id}
-            className="scroll-mt-24 flex h-full w-[74%] shrink-0 snap-start flex-col gap-4 overflow-hidden rounded-[28px] bg-muted sm:w-auto sm:shrink"
+            className="scroll-mt-24 flex h-full w-[74%] shrink-0 snap-start flex-col gap-4 overflow-hidden rounded-[28px] bg-muted transition-shadow duration-300 hover:shadow-[0_16px_40px_-16px_rgba(32,26,21,0.2)] sm:w-auto sm:shrink"
           >
             {"image" in item && item.image ? (
-              <div className="relative aspect-[4/3] w-full">
+              <div className="img-zoom-wrap relative aspect-[4/3] w-full">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   sizes="(min-width: 1024px) 24vw, 74vw"
-                  className="object-cover"
+                  className="img-zoom object-cover"
                 />
                 <div className="absolute left-4 top-4 flex size-10 items-center justify-center rounded-full bg-white text-primary shadow-[0_8px_20px_-8px_rgba(32,26,21,0.3)]">
                   <Icon size={20} />

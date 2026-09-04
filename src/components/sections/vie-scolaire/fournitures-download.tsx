@@ -12,9 +12,24 @@ import {
   DropdownTrigger,
 } from "@/components/ui/dropdown";
 import { fournituresLevels, fournituresSuppliers } from "@/lib/content";
+import { storage } from "@/lib/storage";
+
+const STORAGE_KEY = "fournitures:level";
 
 export function FournituresDownload() {
   const [level, setLevel] = React.useState<string>(fournituresLevels[0].file);
+
+  React.useEffect(() => {
+    const saved = storage.get(STORAGE_KEY);
+    if (saved && fournituresLevels.some((l) => l.file === saved)) {
+      setLevel(saved);
+    }
+  }, []);
+
+  function handleLevelChange(value: string) {
+    setLevel(value);
+    storage.set(STORAGE_KEY, value);
+  }
 
   return (
     <div className="flex flex-col gap-8 rounded-[28px] bg-white p-7 ring-1 ring-ink/[0.06] sm:p-9">
@@ -27,7 +42,7 @@ export function FournituresDownload() {
           fournitures scolaires à jour.
         </p>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Dropdown value={level} onValueChange={setLevel}>
+          <Dropdown value={level} onValueChange={handleLevelChange}>
             <DropdownTrigger aria-label="Sélectionner le niveau" className="flex-1" />
             <DropdownContent>
               {fournituresLevels.map((l) => (

@@ -1,16 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { MailboxIcon } from "@/components/ui/mailbox";
+import { storage } from "@/lib/storage";
+
+const STORAGE_KEY = "newsletter:submitted";
+const DRAFT_KEY = "newsletter:draft";
 
 export function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setSubmitted(storage.get(STORAGE_KEY) === "1");
+    setEmail(storage.get(DRAFT_KEY) ?? "");
+    setHydrated(true);
+  }, []);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setEmail(e.target.value);
+    storage.set(DRAFT_KEY, e.target.value);
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
     setSubmitted(true);
+    storage.set(STORAGE_KEY, "1");
+    storage.remove(DRAFT_KEY);
   }
 
   return (
@@ -22,33 +41,52 @@ export function NewsletterForm() {
         <div className="flex flex-col gap-0.5">
           <p className="text-[13px] font-medium text-foreground">Newsletter</p>
           <p className="text-[13px] text-muted-foreground">
-            Restez informé des actualités de l'école.
+            Restez informé des actualités de l&rsquo;école.
           </p>
         </div>
       </div>
 
-      {submitted ? (
-        <p className="text-[13px] font-medium text-primary">
-          Merci ! Vous êtes bien inscrit.
-        </p>
-      ) : (
-        <form onSubmit={handleSubmit} className="flex gap-2">
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="votre@email.com"
-            className="min-w-0 flex-1 rounded-xl border border-ink/10 bg-white px-3.5 py-2 text-[13px] text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30"
-          />
-          <button
-            type="submit"
-            className="shrink-0 rounded-xl bg-primary px-4 py-2 text-[13px] font-medium text-white transition-opacity hover:opacity-90"
-          >
-            S'abonner
-          </button>
-        </form>
-      )}
+      <div className="relative min-h-[44px]">
+        <AnimatePresence mode="wait" initial={false}>
+          {submitted ? (
+            <motion.p
+              key="success"
+              initial={hydrated ? { opacity: 0, y: 6 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[13px] font-medium text-primary"
+            >
+              Merci&nbsp;! Vous êtes bien inscrit.
+            </motion.p>
+          ) : (
+            <motion.form
+              key="form"
+              initial={hydrated ? { opacity: 0, y: 6 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              onSubmit={handleSubmit}
+              className="flex gap-2"
+            >
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={handleChange}
+                placeholder="votre@email.com"
+                className="min-w-0 flex-1 rounded-xl border border-ink/10 bg-white px-3.5 py-2 text-[13px] text-foreground placeholder:text-muted-foreground/60 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
+              />
+              <button
+                type="submit"
+                className="shrink-0 rounded-xl bg-primary px-4 py-2 text-[13px] font-medium text-white hover:bg-[#9c3a00] active:scale-95"
+              >
+                S&rsquo;abonner
+              </button>
+            </motion.form>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
