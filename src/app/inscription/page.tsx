@@ -12,6 +12,32 @@ export const metadata: Metadata = {
     "Inscriptions et réinscriptions ouvertes pour l'année 2026/2027 à School Academy, du préscolaire au lycée.",
 };
 
+const cycleIllustrations: Record<
+  string,
+  { src: string; width: number; height: number }
+> = {
+  prescolaire: {
+    src: "/assets/undraw_family_6gj8.svg",
+    width: 453,
+    height: 472,
+  },
+  primaire: {
+    src: "/assets/undraw_true-friends_1h3v.svg",
+    width: 800,
+    height: 701,
+  },
+  college: {
+    src: "/assets/undraw_mathematics_0j2b.svg",
+    width: 690,
+    height: 800,
+  },
+  lycee: {
+    src: "/assets/undraw_physics_8tvl.svg",
+    width: 763,
+    height: 801,
+  },
+};
+
 export default function InscriptionPage() {
   return (
     <>
@@ -39,16 +65,35 @@ export default function InscriptionPage() {
 
       <section className="py-8 sm:py-10">
         <div className="container-page">
-          <RevealGroup className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {cycles.map((cycle) => (
-              <RevealItem
-                key={cycle.slug}
-                className="flex flex-col gap-1 rounded-2xl bg-muted px-5 py-5 text-center"
-              >
-                <span className="font-display text-base font-medium">{cycle.short}</span>
-                <span className="text-[13px] text-muted-foreground">{cycle.age}</span>
-              </RevealItem>
-            ))}
+          <RevealGroup className="grid grid-cols-2 gap-3.5 sm:grid-cols-4 sm:gap-4 lg:gap-5">
+            {cycles.map((cycle) => {
+              const visual = cycleIllustrations[cycle.slug];
+              return (
+                <RevealItem
+                  key={cycle.slug}
+                  className="group flex flex-col items-center justify-between rounded-2xl sm:rounded-3xl bg-muted/50 p-4 sm:p-5 text-center border border-ink/[0.05] transition-all duration-200 hover:bg-white hover:border-primary/20 hover:shadow-sm"
+                >
+                  {visual && (
+                    <div className="mb-2.5 flex h-16 w-full items-center justify-center sm:h-20">
+                      <Illustration
+                        src={visual.src}
+                        width={visual.width}
+                        height={visual.height}
+                        className="max-h-full max-w-[90px] sm:max-w-[110px] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-2xs"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="font-display text-base font-medium text-foreground">
+                      {cycle.short}
+                    </span>
+                    <span className="inline-flex items-center rounded-full bg-white px-2.5 py-0.5 text-xs font-semibold text-primary shadow-2xs">
+                      {cycle.age}
+                    </span>
+                  </div>
+                </RevealItem>
+              );
+            })}
           </RevealGroup>
         </div>
       </section>
@@ -59,19 +104,19 @@ export default function InscriptionPage() {
             title="Comment inscrire votre enfant"
             description="Quatre étapes simples pour rejoindre School Academy."
           />
-          <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <RevealGroup className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {inscriptionSteps.map((step, i) => (
               <RevealItem
                 key={step.title}
-                className="flex flex-col gap-4 rounded-[28px] bg-white p-7 ring-1 ring-ink/[0.06]"
+                className="flex flex-col gap-2.5 rounded-2xl bg-white p-4 ring-1 ring-ink/[0.06] sm:gap-4 sm:rounded-[28px] sm:p-7"
               >
-                <span className="font-display text-3xl font-medium text-primary/30">
+                <span className="font-display text-2xl font-medium text-primary/30 sm:text-3xl">
                   0{i + 1}
                 </span>
-                <h3 className="font-display text-lg font-medium tracking-tight">
+                <h3 className="font-display text-sm font-medium tracking-tight sm:text-lg">
                   {step.title}
                 </h3>
-                <p className="text-[14px] leading-relaxed text-muted-foreground">
+                <p className="text-xs leading-relaxed text-muted-foreground sm:text-[14px]">
                   {step.text}
                 </p>
               </RevealItem>

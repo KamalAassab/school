@@ -26,19 +26,33 @@ const facilityTags: Record<string, string[]> = {
   sport: ["Piscine chauffée 300 m³", "Terrain synthétique", "Mur d'escalade & Tatami"],
 };
 
+const items = espaceScolaire.filter(
+  (item) => item.id !== "cantine" && item.id !== "fournitures"
+);
+
 export function ServicesGrid() {
-  const items = espaceScolaire.filter(
-    (item) => item.id !== "cantine" && item.id !== "fournitures"
-  );
   const [activeIdx, setActiveIdx] = React.useState(0);
 
   React.useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    const foundIdx = items.findIndex((it) => it.id === hash);
-    if (foundIdx !== -1) {
-      setActiveIdx(foundIdx);
+    function syncHash() {
+      const hash = window.location.hash.replace("#", "");
+      const foundIdx = items.findIndex((it) => it.id === hash);
+      if (foundIdx !== -1) {
+        setActiveIdx(foundIdx);
+      }
     }
-  }, [items]);
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, []);
+
+  function handleSelect(idx: number) {
+    setActiveIdx(idx);
+    if (typeof window !== "undefined" && items[idx]) {
+      window.history.replaceState(null, "", `#${items[idx].id}`);
+    }
+  }
 
   const activeItem = items[activeIdx] ?? items[0];
   const ActiveIcon = icons[activeItem.id];
@@ -47,7 +61,7 @@ export function ServicesGrid() {
   return (
     <div className="flex flex-col gap-5 sm:gap-6">
       {/* 4 Smart Selector Tabs */}
-      <div className="no-scrollbar scroll-fade-x flex gap-2 overflow-x-auto pb-1 sm:justify-center">
+      <div className="relative z-10 grid grid-cols-2 gap-2 w-full sm:flex sm:flex-wrap sm:justify-center sm:w-auto">
         {items.map((item, idx) => {
           const Icon = icons[item.id];
           const isActive = idx === activeIdx;
@@ -55,16 +69,16 @@ export function ServicesGrid() {
             <button
               key={item.id}
               type="button"
-              onClick={() => setActiveIdx(idx)}
+              onClick={() => handleSelect(idx)}
               className={cn(
-                "flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all shrink-0 cursor-pointer",
+                "flex items-center justify-center gap-2 rounded-2xl sm:rounded-full px-3 py-2.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all cursor-pointer text-center min-h-[44px] w-full sm:w-auto select-none",
                 isActive
                   ? "bg-primary text-white shadow-sm"
                   : "bg-white text-foreground/80 hover:bg-white/90 border border-ink/[0.06] hover:text-foreground"
               )}
             >
-              <Icon size={18} className={isActive ? "text-white" : "text-primary"} />
-              <span>{item.title}</span>
+              <Icon size={18} className={cn("shrink-0", isActive ? "text-white" : "text-primary")} />
+              <span className="leading-snug">{item.title}</span>
             </button>
           );
         })}
@@ -112,20 +126,20 @@ export function ServicesGrid() {
               <button
                 type="button"
                 onClick={() =>
-                  setActiveIdx((prev) => (prev > 0 ? prev - 1 : items.length - 1))
+                  handleSelect(activeIdx > 0 ? activeIdx - 1 : items.length - 1)
                 }
                 aria-label="Espace précédent"
-                className="flex size-9 items-center justify-center rounded-full bg-muted/70 text-foreground transition-colors hover:bg-primary hover:text-white"
+                className="flex size-9 items-center justify-center rounded-full bg-muted/70 text-foreground transition-colors hover:bg-primary hover:text-white cursor-pointer"
               >
                 <ArrowLeftIcon size={16} />
               </button>
               <button
                 type="button"
                 onClick={() =>
-                  setActiveIdx((prev) => (prev < items.length - 1 ? prev + 1 : 0))
+                  handleSelect(activeIdx < items.length - 1 ? activeIdx + 1 : 0)
                 }
                 aria-label="Espace suivant"
-                className="flex size-9 items-center justify-center rounded-full bg-muted/70 text-foreground transition-colors hover:bg-primary hover:text-white"
+                className="flex size-9 items-center justify-center rounded-full bg-muted/70 text-foreground transition-colors hover:bg-primary hover:text-white cursor-pointer"
               >
                 <ArrowRightIcon size={16} />
               </button>

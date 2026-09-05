@@ -41,9 +41,13 @@ export function FournituresDownload() {
           Sélectionnez le niveau de votre enfant pour obtenir la liste de
           fournitures scolaires à jour.
         </p>
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <Dropdown value={level} onValueChange={handleLevelChange}>
-            <DropdownTrigger aria-label="Sélectionner le niveau" className="flex-1" />
+            <DropdownTrigger
+              aria-label="Sélectionner le niveau"
+              size="default"
+              className="w-full sm:flex-1 h-12"
+            />
             <DropdownContent>
               {fournituresLevels.map((l) => (
                 <DropdownItem key={l.file} value={l.file}>
@@ -52,7 +56,7 @@ export function FournituresDownload() {
               ))}
             </DropdownContent>
           </Dropdown>
-          <Button asChild size="lg">
+          <Button asChild size="default" className="h-12 px-6 shrink-0 w-full sm:w-auto">
             <Link href={`/documents/fournitures/${level}.pdf`} target="_blank">
               <FileTextIcon size={18} />
               Télécharger

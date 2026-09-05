@@ -86,15 +86,9 @@ export default function PedagogiePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col gap-1 text-white">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-brand">
-                  Équipement interactif
-                </span>
                 <h4 className="font-display text-base sm:text-lg font-medium tracking-tight text-white">
                   Tableau blanc interactif (TBI)
                 </h4>
-                <p className="text-xs sm:text-[13px] text-white/80 line-clamp-2">
-                  Des cours immersifs et vivants dès le préscolaire grâce aux tableaux tactiles.
-                </p>
               </div>
             </Reveal>
 
@@ -108,15 +102,9 @@ export default function PedagogiePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col gap-1 text-white">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-brand">
-                  Ateliers &amp; Numérique
-                </span>
                 <h4 className="font-display text-base sm:text-lg font-medium tracking-tight text-white">
                   Table interactive tactile
                 </h4>
-                <p className="text-xs sm:text-[13px] text-white/80 line-clamp-2">
-                  Apprentissage collaboratif et intuitif stimulant la curiosité et l’esprit d’équipe.
-                </p>
               </div>
             </Reveal>
           </div>
@@ -204,16 +192,11 @@ export default function PedagogiePage() {
 
             {/* Campus Facilities Showcase (Multiplicité) - All 15 items with full text and no truncation */}
             <Reveal delay={0.1} className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-ink/[0.06] shadow-xs">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-ink/[0.06] pb-4 mb-5">
-                <div className="flex items-center gap-3">
-                  <WaypointsIcon size={22} className="text-primary shrink-0" />
-                  <h4 className="font-display text-base font-semibold tracking-tight text-foreground">
-                    Les 15 espaces &amp; infrastructures du campus
-                  </h4>
-                </div>
-                <span className="text-xs font-medium text-primary bg-primary/5 px-3 py-1 rounded-full w-fit">
-                  Au service du projet Multiplicité
-                </span>
+              <div className="flex items-center gap-3 border-b border-ink/[0.06] pb-4 mb-5">
+                <WaypointsIcon size={22} className="text-primary shrink-0" />
+                <h4 className="font-display text-base font-semibold tracking-tight text-foreground">
+                  Les 15 espaces &amp; infrastructures du campus
+                </h4>
               </div>
 
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3.5 text-[13.5px] text-foreground/85">

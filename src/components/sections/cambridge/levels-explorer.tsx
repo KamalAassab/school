@@ -36,24 +36,35 @@ export function LevelsExplorer() {
 
   return (
     <div className="flex flex-col gap-4 sm:gap-5">
-      {/* Compact level selector pills */}
-      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+      {/* Level selector: 5-column full-width segmented row on mobile, flex row on desktop */}
+      <div className="grid grid-cols-5 gap-1 w-full sm:flex sm:flex-wrap sm:w-auto sm:gap-2">
         {cambridgeLevels.map((level) => {
           const isActive = level.code === active;
+          const shortName = level.code.replace("YLE ", "");
           return (
             <button
               key={level.code}
               type="button"
               onClick={() => handleSelect(level.code)}
               className={cn(
-                "rounded-full px-3.5 py-1.5 text-xs sm:text-sm font-medium transition-all duration-150 cursor-pointer",
+                "flex items-center justify-center rounded-full py-2 px-1 text-center transition-all duration-150 cursor-pointer sm:px-4 sm:py-2",
                 isActive
                   ? "bg-primary text-primary-foreground font-semibold shadow-xs"
                   : "bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground"
               )}
             >
-              <span>{level.code}</span>
-              <span className={cn("ml-1 text-[11px]", isActive ? "text-white/80" : "text-muted-foreground/60")}>
+              <span className="text-[11px] xs:text-xs sm:hidden font-medium truncate">
+                {shortName}
+              </span>
+              <span className="hidden sm:inline text-sm font-medium">
+                {level.code}
+              </span>
+              <span
+                className={cn(
+                  "hidden lg:inline ml-1 text-[11px]",
+                  isActive ? "text-white/80" : "text-muted-foreground/60"
+                )}
+              >
                 ({level.audience})
               </span>
             </button>

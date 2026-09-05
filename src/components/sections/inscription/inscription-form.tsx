@@ -125,7 +125,7 @@ export function InscriptionForm() {
       */}
       <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] lg:items-stretch">
         {/* CARD PART 1: Left Wing (Élève) */}
-        <div className="order-1 lg:order-none lg:col-start-1 lg:row-start-1 lg:row-span-2 flex flex-col rounded-t-[28px] lg:rounded-t-[28px] lg:rounded-b-none bg-white p-6 pt-4 pb-4 sm:p-8 sm:pt-6 sm:pb-5 lg:p-8 lg:pt-6 lg:pb-5 shadow-[0_1px_0_rgba(32,26,21,0.04)] border border-ink/[0.06] border-b-0">
+        <div className="order-1 lg:order-none lg:col-start-1 lg:row-start-1 lg:row-span-2 flex flex-col rounded-t-[28px] lg:rounded-t-[28px] lg:rounded-b-none bg-white p-4 pt-4 pb-4 sm:p-8 sm:pt-6 sm:pb-5 lg:p-8 lg:pt-6 lg:pb-5 shadow-[0_1px_0_rgba(32,26,21,0.04)] border border-ink/[0.06] border-b-0">
           <div className="flex flex-col gap-6">
             {/* Header */}
             <div className="border-b border-ink/[0.06] pb-3">
@@ -139,7 +139,7 @@ export function InscriptionForm() {
               <h3 className="text-[13px] font-semibold uppercase tracking-[0.1em] text-primary">
                 Informations de l&rsquo;élève
               </h3>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
                 <FormField label="Nom *" htmlFor="eleveNom" error={errors.eleveNom?.message}>
                   <Input id="eleveNom" aria-invalid={!!errors.eleveNom} {...register("eleveNom")} />
                 </FormField>
@@ -187,7 +187,7 @@ export function InscriptionForm() {
               <h3 className="text-[13px] font-semibold uppercase tracking-[0.1em] text-primary">
                 Scolarité
               </h3>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
                 <FormField label="Niveau souhaité *" htmlFor="niveau" error={errors.niveau?.message}>
                   <Controller
                     control={control}
@@ -196,8 +196,9 @@ export function InscriptionForm() {
                       <Dropdown value={field.value} onValueChange={field.onChange}>
                         <DropdownTrigger
                           id="niveau"
-                          placeholder="Sélectionner un niveau"
+                          placeholder="Sélectionner"
                           aria-invalid={!!errors.niveau}
+                          className="px-3 sm:px-5 text-sm sm:text-[15px]"
                         />
                         <DropdownContent>
                           {niveauxScolaires.map((n) => (
@@ -210,7 +211,7 @@ export function InscriptionForm() {
                     )}
                   />
                 </FormField>
-                <FormField label="Filière (uniquement pour le lycée)" htmlFor="filiere">
+                <FormField label="Filière (lycée)" htmlFor="filiere">
                   <Controller
                     control={control}
                     name="filiere"
@@ -220,7 +221,11 @@ export function InscriptionForm() {
                         onValueChange={field.onChange}
                         disabled={!isLycee}
                       >
-                        <DropdownTrigger id="filiere" placeholder="Non applicable" />
+                        <DropdownTrigger
+                          id="filiere"
+                          placeholder="Non applicable"
+                          className="px-3 sm:px-5 text-sm sm:text-[15px]"
+                        />
                         <DropdownContent>
                           {filieresLycee.map((f) => (
                             <DropdownItem key={f} value={f}>
@@ -298,19 +303,19 @@ export function InscriptionForm() {
         </div>
 
         {/* CARD PART 2: Full-width bottom (Scolarité + Tuteur légal) */}
-        <div className="order-2 lg:order-none lg:col-start-1 lg:col-span-2 lg:row-start-3 rounded-[28px] lg:rounded-tl-none bg-white p-7 pt-6 sm:p-8 sm:pt-6 lg:p-10 lg:pt-6 flex flex-col gap-6 mt-6 lg:mt-0 shadow-[0_1px_0_rgba(32,26,21,0.04)] border border-ink/[0.06] lg:border-t-0">
+        <div className="order-2 lg:order-none lg:col-start-1 lg:col-span-2 lg:row-start-3 rounded-[28px] lg:rounded-tl-none bg-white p-4 pt-5 pb-5 sm:p-8 sm:pt-6 lg:p-10 lg:pt-6 flex flex-col gap-6 mt-6 lg:mt-0 shadow-[0_1px_0_rgba(32,26,21,0.04)] border border-ink/[0.06] lg:border-t-0">
           {/* Scolarité (suite) */}
           <div className="flex flex-col gap-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
               <FormField label="Transport scolaire" htmlFor="transport">
                 <Controller
                   control={control}
                   name="transport"
                   render={({ field }) => (
-                    <div className="flex h-13 w-full items-center justify-between gap-2 rounded-xl border border-input bg-white px-3 whitespace-nowrap">
+                    <div className="flex h-10 sm:h-13 w-full items-center justify-between gap-2 rounded-xl border border-input bg-white px-3 whitespace-nowrap">
                       <span
                         className={cn(
-                          "text-[14px] font-medium transition-colors",
+                          "text-xs sm:text-[14px] font-medium transition-colors",
                           field.value === "oui" ? "text-foreground" : "text-muted-foreground"
                         )}
                       >
@@ -330,10 +335,10 @@ export function InscriptionForm() {
                   control={control}
                   name="cantine"
                   render={({ field }) => (
-                    <div className="flex h-13 w-full items-center justify-between gap-2 rounded-xl border border-input bg-white px-3 whitespace-nowrap">
+                    <div className="flex h-10 sm:h-13 w-full items-center justify-between gap-2 rounded-xl border border-input bg-white px-3 whitespace-nowrap">
                       <span
                         className={cn(
-                          "text-[14px] font-medium transition-colors",
+                          "text-xs sm:text-[14px] font-medium transition-colors",
                           field.value === "oui" ? "text-foreground" : "text-muted-foreground"
                         )}
                       >
@@ -375,7 +380,7 @@ export function InscriptionForm() {
             </div>
 
             {/* Tuteur Fields — all 5 in one row on desktop */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-5">
               <FormField label="Nom *" htmlFor="tuteurNom" error={errors.tuteurNom?.message}>
                 <Input id="tuteurNom" aria-invalid={!!errors.tuteurNom} {...register("tuteurNom")} />
               </FormField>
@@ -428,6 +433,7 @@ export function InscriptionForm() {
                 label="Fonction *"
                 htmlFor="fonction"
                 error={errors.fonction?.message}
+                className="col-span-2 sm:col-span-1 lg:col-span-1"
               >
                 <Input id="fonction" aria-invalid={!!errors.fonction} {...register("fonction")} />
               </FormField>

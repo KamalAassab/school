@@ -15,11 +15,11 @@ export function FormField({
   className?: string;
 }) {
   return (
-    <div className={cn("flex flex-col gap-2", className)}>
+    <div className={cn("flex flex-col gap-1.5 sm:gap-2", className)}>
       <Label htmlFor={htmlFor}>{label}</Label>
       {children}
       {error ? (
-        <p role="alert" className="text-[13px] text-destructive">
+        <p role="alert" className="text-xs sm:text-[13px] text-destructive">
           {error}
         </p>
       ) : null}

@@ -556,16 +556,16 @@ export function StaggeredMenu({
                                   toggleDropdown(it.label);
                                 }}
                                 className={cn(
-                                  "size-10 inline-flex items-center justify-center rounded-full transition-all duration-200",
+                                  "size-10 inline-flex items-center justify-center transition-all duration-200 border-none outline-none focus:outline-none focus:ring-0 cursor-pointer",
                                   isExpanded
-                                    ? "bg-primary/10 text-primary"
-                                    : "bg-ink/[0.04] text-ink/70 hover:bg-ink/[0.08] hover:text-primary"
+                                    ? "text-primary"
+                                    : "text-ink/60 hover:text-primary"
                                 )}
                                 aria-label={`Afficher les sous-rubriques de ${it.label}`}
                                 aria-expanded={isExpanded}
                               >
                                 <ChevronDownIcon
-                                  size={16}
+                                  size={18}
                                   className={cn(
                                     "transition-transform duration-200",
                                     isExpanded && "rotate-180"
@@ -666,6 +666,11 @@ export function StaggeredMenu({
         : null}
 
       <style jsx global>{`
+        .sm-scope-portal button {
+          border: none;
+          outline: none;
+          box-shadow: none;
+        }
         .sm-scope-portal .staggered-menu-panel {
           width: clamp(290px, 86vw, 420px);
         }

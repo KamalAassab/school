@@ -17,7 +17,7 @@ export function SegmentedToggle({
     <div
       role="radiogroup"
       aria-label={name}
-      className="inline-flex h-13 w-full items-center rounded-xl border border-input bg-white p-1"
+      className="inline-flex h-10 sm:h-13 w-full items-center rounded-xl border border-input bg-white p-1"
     >
       {options.map((option) => (
         <button
@@ -27,7 +27,7 @@ export function SegmentedToggle({
           aria-checked={value === option.value}
           onClick={() => onChange(option.value)}
           className={cn(
-            "flex h-full flex-1 items-center justify-center rounded-xl text-[14px] font-medium transition-colors duration-150",
+            "flex h-full flex-1 items-center justify-center rounded-lg sm:rounded-xl text-xs sm:text-[14px] font-medium transition-colors duration-150",
             value === option.value
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground"
