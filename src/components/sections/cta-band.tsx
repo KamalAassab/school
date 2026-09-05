@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/arrow-right";
 
+import dynamic from "next/dynamic";
+
 import { Reveal } from "@/components/site/reveal";
-import { VideoPlayer } from "@/components/video-player/video-player";
+
+// Same as the director video: below the fold, interactive only on play.
+const VideoPlayer = dynamic(() =>
+  import("@/components/video-player/video-player").then((mod) => mod.VideoPlayer)
+);
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 

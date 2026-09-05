@@ -2,8 +2,15 @@ import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/arrow-right";
 import { MessageSquareIcon } from "@/components/ui/message-square";
 
+import dynamic from "next/dynamic";
+
 import { Reveal } from "@/components/site/reveal";
-import { VideoPlayer } from "@/components/video-player/video-player";
+
+// Below the fold and only interactive once the user presses play, so its
+// JS is split out of the shared bundle. Still server-rendered.
+const VideoPlayer = dynamic(() =>
+  import("@/components/video-player/video-player").then((mod) => mod.VideoPlayer)
+);
 import { Button } from "@/components/ui/button";
 import { presentationSections } from "@/lib/content";
 

@@ -333,8 +333,10 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       {/* Video Element */}
       <video
         ref={videoRef}
-        poster={poster}
-        preload="metadata"
+        // No `poster` attribute on purpose: the overlay <img> below covers the
+        // video until playback starts and can be lazy-loaded, whereas a poster
+        // attribute is always fetched eagerly. Both players sit below the fold.
+        preload="none"
         playsInline
         autoPlay={autoPlay}
         loop={loop}
@@ -361,6 +363,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         <img
           src={poster}
           alt={title || "Miniature vidéo"}
+          loading="lazy"
+          decoding="async"
           className="pointer-events-none absolute inset-0 size-full object-cover select-none"
         />
       ) : null}

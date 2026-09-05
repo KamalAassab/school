@@ -136,10 +136,10 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium transition-colors",
+                  "inline-flex h-10 items-center rounded-full px-4 text-[15px] font-medium transition-all duration-200",
                   active
-                    ? "bg-ink/[0.06] text-foreground"
-                    : "text-foreground/70 hover:bg-ink/[0.04] hover:text-foreground"
+                    ? "bg-primary text-white shadow-xs"
+                    : "text-foreground/75 hover:bg-ink/[0.05] hover:text-foreground"
                 )}
               >
                 {item.label}

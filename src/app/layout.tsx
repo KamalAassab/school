@@ -20,10 +20,13 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
+// Only used for Arabic news titles, which sit below the fold. Keeping it out
+// of the preload list leaves the critical path to the two fonts that paint first.
 const rubik = Rubik({
   subsets: ["latin", "arabic"],
   variable: "--font-rubik",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -41,9 +44,9 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     type: "website",
   },
-  icons: {
-    icon: "/logo.webp",
-  },
+  // Icon comes from the app/icon.png file convention, which Next serves
+  // hashed and immutable. Pointing at /logo.webp made the browser download
+  // the full 61 KB logo just for the tab icon.
 };
 
 export const viewport: Viewport = {

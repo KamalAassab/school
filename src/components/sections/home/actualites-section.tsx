@@ -139,13 +139,16 @@ export function ActualitesSection() {
                     {/* Exact Instagram 4:5 Aspect Ratio Post Card (no black border, hardware-accelerated rounded corners) */}
                     <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[22px] bg-neutral-900/10 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover:shadow-[0_12px_28px_-6px_rgba(0,0,0,0.22)] transform-gpu isolate">
                       {/* Photo Image in 4:5 */}
+                      {/* The carousel sits below the fold, so nothing here
+                          competes with the hero for the initial connection. */}
                       <img
                         src={item.displayUrl}
                         alt={item.title}
+                        width={480}
+                        height={600}
                         referrerPolicy="no-referrer"
-                        loading={index < 4 ? "eager" : "lazy"}
-                        decoding={index < 4 ? "sync" : "async"}
-                        fetchPriority={index < 2 ? "high" : "auto"}
+                        loading="lazy"
+                        decoding="async"
                         className="absolute inset-0 size-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                       />
 
