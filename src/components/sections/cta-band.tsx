@@ -14,7 +14,7 @@ export function CtaBand({
   secondaryLabel = "Nous contacter",
   secondaryHref = "/contact",
   videoSrc,
-  videoPoster = "/images/second-video.png",
+  videoPoster = "/images/second-video.webp",
 }: {
   title: React.ReactNode;
   description?: string;

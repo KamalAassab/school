@@ -19,11 +19,11 @@ export function Logo({
       aria-label="School Academy, accueil"
     >
       <Image
-        src="/logo.svg"
+        src="/logo.webp"
         alt="School Academy"
         width={40}
         height={44}
-        priority
+        preload
         className="h-10 w-auto shrink-0"
       />
       <span

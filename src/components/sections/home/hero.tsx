@@ -159,10 +159,10 @@ export function Hero() {
           <div className="scale-105 lg:scale-120 -translate-x-3 lg:-translate-x-14 origin-center transition-transform">
             <div className="@container relative aspect-[3/2] w-full [container-type:inline-size]">
               <Image
-                src="/images/hero-illustration.png"
+                src="/images/hero-illustration.webp"
                 alt="Deux élèves de School Academy, cartable sur le dos et livres à la main"
                 fill
-                priority
+                preload
                 sizes="(min-width: 1024px) 50vw, 95vw"
                 className="object-contain"
               />

@@ -20,7 +20,7 @@ export function Footer() {
           <div className="col-span-2 flex flex-col items-center justify-center gap-4 text-center sm:col-span-1 lg:col-span-1">
             <Link href="/" aria-label="School Academy, accueil" className="inline-block">
               <Image
-                src="/logo.svg"
+                src="/logo.webp"
                 alt="School Academy"
                 width={96}
                 height={106}

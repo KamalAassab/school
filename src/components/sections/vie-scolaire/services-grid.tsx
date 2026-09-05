@@ -158,7 +158,7 @@ export function ServicesGrid() {
                 fill
                 sizes="(min-width: 1024px) 520px, 100vw"
                 className="img-zoom object-cover"
-                priority
+                preload
               />
             ) : null}
           </div>

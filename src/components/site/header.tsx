@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right";
@@ -12,13 +13,23 @@ import { PhoneIcon } from "@/components/ui/phone";
 
 import { Logo } from "@/components/site/logo";
 import { Button } from "@/components/ui/button";
-import {
-  StaggeredMenu,
-  type StaggeredMenuItem,
-  type StaggeredMenuSocialItem,
+import type {
+  StaggeredMenuItem,
+  StaggeredMenuSocialItem,
 } from "@/components/ui/staggered-menu";
 import { mainNav, siteConfig } from "@/lib/content";
 import { cn } from "@/lib/utils";
+
+// Code-split the gsap-powered mobile menu out of the main bundle: it's only
+// interacted with on mobile, well after first paint.
+const StaggeredMenu = dynamic(
+  () => import("@/components/ui/staggered-menu").then((mod) => mod.StaggeredMenu),
+  {
+    loading: () => (
+      <div className="flex size-11 items-center justify-center rounded-full bg-muted" aria-hidden />
+    ),
+  }
+);
 
 const menuItems: StaggeredMenuItem[] = [
   {

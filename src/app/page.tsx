@@ -34,7 +34,7 @@ export default function HomePage() {
         title="Prêt à donner à votre enfant le meilleur tremplin ?"
         description="Les inscriptions et réinscriptions pour l'année 2026/2027 sont ouvertes. Notre équipe vous accompagne à chaque étape."
         videoSrc="/media/intro.mp4"
-        videoPoster="/images/second-video.png"
+        videoPoster="/images/second-video.webp"
       />
     </>
   );

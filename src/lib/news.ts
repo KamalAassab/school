@@ -1,8 +1,6 @@
 import rawNewsData from "../../public/news/dataset_instagram-scraper_2026-09-05_14-29-31-103.json";
-import localImagesData from "./news-local-images.json";
 import thumbnailsData from "./news-thumbnails.json";
 
-const localImages = localImagesData as Record<string, string>;
 const thumbnails = thumbnailsData as Record<string, string>;
 
 export interface RawNewsItem {
@@ -20,7 +18,6 @@ export interface NewsItem {
   description: string;
   fullCaption: string;
   displayUrl: string;
-  fullImageUrl: string;
   timestamp: string;
   formattedDate: string;
   url: string;
@@ -83,15 +80,13 @@ export const allNews: NewsItem[] = (rawNewsData as RawNewsItem[])
   .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
   .map((item, index) => {
     const parsed = parsePostContent(item.caption);
-    const localFull = localImages[item.url] || item.displayUrl;
-    const localThumb = thumbnails[item.url] || localFull;
+    const localThumb = thumbnails[item.url] || item.displayUrl;
     return {
       id: `news-${index}-${item.timestamp}`,
       title: parsed.title,
       description: parsed.description,
       fullCaption: item.caption,
       displayUrl: localThumb,
-      fullImageUrl: localFull,
       timestamp: item.timestamp,
       formattedDate: formatFrenchDate(item.timestamp),
       url: item.url,
