@@ -33,20 +33,20 @@ export function NewsletterForm() {
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 w-full">
       <div className="flex items-center gap-3">
-        <span className="flex size-9 shrink-0 items-center justify-center text-primary">
-          <MailboxIcon size={16} />
+        <span className="flex size-9 sm:size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <MailboxIcon size={18} />
         </span>
         <div className="flex flex-col gap-0.5">
-          <p className="text-[13px] font-medium text-foreground">Newsletter</p>
-          <p className="text-[13px] text-muted-foreground">
-            Restez informé des actualités de l&rsquo;école.
+          <p className="text-sm sm:text-[15px] font-semibold text-foreground">Newsletter</p>
+          <p className="text-xs sm:text-[13px] text-muted-foreground">
+            Restez informé des actualités et temps forts de School Academy.
           </p>
         </div>
       </div>
 
-      <div className="relative min-h-[44px]">
+      <div className="w-full lg:w-auto lg:min-w-[340px] xl:min-w-[380px]">
         <AnimatePresence mode="wait" initial={false}>
           {submitted ? (
             <motion.p
@@ -55,7 +55,7 @@ export function NewsletterForm() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[13px] font-medium text-primary"
+              className="text-xs sm:text-[13px] font-medium text-primary py-2 text-center lg:text-left"
             >
               Merci&nbsp;! Vous êtes bien inscrit.
             </motion.p>
@@ -67,7 +67,7 @@ export function NewsletterForm() {
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onSubmit={handleSubmit}
-              className="flex gap-2"
+              className="flex flex-col sm:flex-row gap-2"
             >
               <input
                 type="email"
@@ -75,11 +75,11 @@ export function NewsletterForm() {
                 value={email}
                 onChange={handleChange}
                 placeholder="votre@email.com"
-                className="min-w-0 flex-1 rounded-xl border border-ink/10 bg-white px-3.5 py-2 text-[13px] text-foreground placeholder:text-muted-foreground/60 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="min-w-0 w-full flex-1 rounded-xl border border-ink/10 bg-white px-3.5 py-2 text-xs sm:text-[13px] text-foreground placeholder:text-muted-foreground/60 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
               <button
                 type="submit"
-                className="shrink-0 rounded-xl bg-primary px-4 py-2 text-[13px] font-medium text-white hover:bg-[#9c3a00] active:scale-95"
+                className="w-full sm:w-auto shrink-0 rounded-xl bg-primary px-4 py-2 text-xs sm:text-[13px] font-medium text-white transition-colors hover:bg-[#9c3a00] active:scale-95 cursor-pointer"
               >
                 S&rsquo;abonner
               </button>

@@ -50,7 +50,7 @@ export function Pillars() {
             title="Tout ce qu&rsquo;il faut pour grandir, apprendre et s&rsquo;épanouir"
             description="Quatre piliers pensés ensemble, du premier jour au baccalauréat."
           />
-          <Reveal delay={0.1} className="mx-auto w-full max-w-[240px] sm:max-w-xs lg:max-w-sm">
+          <Reveal delay={0.1} className="mx-auto w-full max-w-[190px] sm:max-w-[250px] lg:max-w-[300px]">
             <Illustration
               src="/assets/undraw_education_3vwh.svg"
               width={744}

@@ -50,11 +50,11 @@ export default function CambridgePage() {
               title="Un parcours de certification, niveau par niveau"
               description="Cinq étapes progressives pour accompagner chaque élève, du premier contact avec l'anglais jusqu'à un niveau intermédiaire confirmé."
             />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-[200px] sm:max-w-[240px]">
+            <Reveal delay={0.1} className="mx-auto w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[280px]">
               <Illustration
-                src="/assets/undraw_certification_oqiz.svg"
-                width={429}
-                height={567}
+                src="/assets/undraw_road-to-knowledge_ufma.svg"
+                width={960}
+                height={336}
               />
             </Reveal>
           </div>
@@ -66,7 +66,7 @@ export default function CambridgePage() {
         <div className="container-page flex flex-col gap-8">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
             <SectionHeading title="Une collaboration qui fait la différence" />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-[220px] sm:max-w-xs">
+            <Reveal delay={0.1} className="mx-auto w-full max-w-[150px] sm:max-w-[180px] lg:max-w-[195px]">
               <Illustration
                 src="/assets/undraw_educator_6dgp.svg"
                 width={851}

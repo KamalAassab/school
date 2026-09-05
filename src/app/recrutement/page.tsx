@@ -36,20 +36,11 @@ export default function RecrutementPage() {
       <section className="py-12 sm:py-16">
         <div className="container-page grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_0.9fr] lg:gap-16">
           <Reveal>
-            <div className="mb-8 grid grid-cols-1 items-center gap-8 sm:grid-cols-[1.2fr_0.8fr]">
-              <SectionHeading
-                title="Nos domaines de recrutement"
-                description="Consultez les profils recherchés par domaine et cycle d'enseignement."
-              />
-              <div className="mx-auto w-full max-w-[180px] sm:max-w-[200px]">
-                <Illustration
-                  src="/assets/undraw_true-friends_1h3v.svg"
-                  width={800}
-                  height={701}
-                />
-              </div>
-            </div>
-            <Accordion type="single" collapsible defaultValue={recrutementDomains[0].title}>
+            <SectionHeading
+              title="Nos domaines de recrutement"
+              className="mb-8"
+            />
+            <Accordion type="single" collapsible>
               {recrutementDomains.map((domain) => (
                 <AccordionItem key={domain.title} value={domain.title}>
                   <AccordionTrigger>{domain.title}</AccordionTrigger>

@@ -25,6 +25,8 @@ const slugs = cycles.map((c) => c.slug) as string[];
 const cycleIllustrations: Partial<
   Record<string, { src: string; width: number; height: number }>
 > = {
+  prescolaire: { src: "/assets/undraw_family_6gj8.svg", width: 453, height: 472 },
+  primaire: { src: "/assets/undraw_true-friends_1h3v.svg", width: 800, height: 701 },
   college: { src: "/assets/undraw_mathematics_0j2b.svg", width: 690, height: 800 },
   lycee: { src: "/assets/undraw_physics_8tvl.svg", width: 763, height: 801 },
 };
@@ -307,56 +309,67 @@ export function CyclesTabs() {
             id={cycle.slug}
             className="scroll-mt-24"
           >
-            <div className="flex flex-col gap-6 rounded-[28px] bg-muted p-8 sm:p-10">
-              <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
-                <div className="flex flex-col gap-5">
-                  <span className="w-fit rounded-full bg-white px-3.5 py-1.5 text-[13px] font-medium text-primary">
+            <div className="flex flex-col gap-5 rounded-2xl bg-muted/70 p-6 sm:p-7 lg:p-8 border border-ink/[0.05]">
+              <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1.1fr_1.1fr_150px] lg:grid-cols-[1.15fr_1.15fr_170px] lg:gap-8">
+                {/* 1. Cycle Info */}
+                <div className="flex flex-col gap-3">
+                  <span className="w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold text-primary shadow-2xs">
                     {cycle.age}
                   </span>
-                  <h3 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">
+                  <h3 className="font-display text-2xl font-medium tracking-tight sm:text-2xl lg:text-[26px]">
                     {cycle.label}
                   </h3>
-                  <p className="max-w-[48ch] text-[16px] leading-relaxed text-muted-foreground">
+                  <p className="max-w-[42ch] text-[14.5px] leading-relaxed text-muted-foreground">
                     {cycle.description}
                   </p>
-                  <Button asChild variant="outline" className="mt-1 w-fit bg-white">
+                  <Button asChild variant="outline" className="mt-1 w-fit bg-white h-10 px-4 text-xs font-medium shadow-2xs">
                     <Link href="/recrutement">
                       Recrutement · {cycle.short}
-                      <ArrowRightIcon size={16} />
+                      <ArrowRightIcon size={14} />
                     </Link>
                   </Button>
                 </div>
-                <div className="flex flex-col gap-6">
-                  {cycleIllustrations[cycle.slug] ? (
-                    <Illustration
-                      {...cycleIllustrations[cycle.slug]!}
-                      className="mx-auto max-w-[140px] sm:max-w-[160px]"
-                    />
-                  ) : null}
-                  <ul className="flex flex-col gap-4">
+
+                {/* 2. Key Highlights */}
+                <div className="flex flex-col justify-center">
+                  <span className="mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Points clés du cycle
+                  </span>
+                  <ul className="flex flex-col gap-2.5">
                     {cycle.highlights.map((highlight) => (
-                      <li key={highlight} className="flex items-start gap-3">
+                      <li key={highlight} className="flex items-start gap-2.5 text-[13.5px] leading-snug text-foreground/85">
                         <CircleCheckIcon
-                          size={20}
+                          size={16}
                           className="mt-0.5 shrink-0 text-primary"
                         />
-                        <span className="text-[15px] leading-relaxed text-foreground/85">
-                          {highlight}
-                        </span>
+                        <span>{highlight}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
+
+                {/* 3. Illustration */}
+                {cycleIllustrations[cycle.slug] ? (
+                  <div className="flex items-center justify-center py-2 md:py-0">
+                    <Illustration
+                      {...cycleIllustrations[cycle.slug]!}
+                      className="max-h-[130px] w-auto max-w-[130px] sm:max-w-[145px] object-contain drop-shadow-2xs transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                ) : null}
               </div>
 
               {/* Desktop view: standard accordion table */}
-              <div className="hidden sm:block">
+              <div className="hidden sm:block border-t border-ink/[0.08] pt-1 mt-1">
                 <Accordion type="single" collapsible>
-                  <AccordionItem value="emploi-du-temps" className="border-ink/[0.08]">
-                    <AccordionTrigger className="py-4 text-base">
-                      Voir l&rsquo;emploi du temps type
+                  <AccordionItem value="emploi-du-temps" className="border-none">
+                    <AccordionTrigger className="py-2.5 text-sm font-medium text-foreground hover:text-primary transition-colors">
+                      <span className="flex items-center gap-2">
+                        <span>Voir l&rsquo;emploi du temps type</span>
+                        <span className="text-xs font-normal text-muted-foreground">({cycle.label})</span>
+                      </span>
                     </AccordionTrigger>
-                    <AccordionContent>
+                    <AccordionContent className="pt-2">
                       <ScheduleTable slug={cycle.slug} />
                     </AccordionContent>
                   </AccordionItem>
@@ -364,7 +377,7 @@ export function CyclesTabs() {
               </div>
 
               {/* Mobile view: dedicated modal fitting screen width */}
-              <div className="sm:hidden border-t border-ink/[0.08] pt-1">
+              <div className="sm:hidden border-t border-ink/[0.08] pt-2">
                 <MobileScheduleModal slug={cycle.slug} cycleLabel={cycle.label} />
               </div>
             </div>

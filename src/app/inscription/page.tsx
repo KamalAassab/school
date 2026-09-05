@@ -25,12 +25,6 @@ export default function InscriptionPage() {
             <h1 className="font-display text-4xl font-medium leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.25rem]">
               Offrez à votre enfant le tremplin vers l&rsquo;excellence
             </h1>
-            <p className="max-w-[62ch] text-[17px] leading-relaxed text-muted-foreground">
-              Nos enfants constituent la locomotive future qui aura pour but de tirer
-              notre pays vers l&rsquo;avant. Pour y parvenir, ils doivent être armés
-              d&rsquo;outils tant pédagogiques que didactiques, c&rsquo;est la mission
-              que School Academy porte, du préscolaire au lycée.
-            </p>
           </Reveal>
           <Reveal delay={0.1} className="mx-auto w-full max-w-[280px] sm:max-w-md lg:max-w-none">
             <Illustration

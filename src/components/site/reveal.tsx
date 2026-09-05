@@ -19,16 +19,16 @@ export function Reveal({ children, className, delay = 0, y = 22, once = true }: 
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
   return (
     <motion.div
       className={className}
-      initial="hidden"
+      initial={false}
       whileInView="visible"
-      viewport={{ once, amount: 0.25 }}
+      viewport={{ once, amount: 0.1 }}
       variants={variants}
     >
       {children}
@@ -46,9 +46,9 @@ export function RevealGroup({ children, className, stagger = 0.08 }: StaggerProp
   return (
     <motion.div
       className={className}
-      initial="hidden"
+      initial={false}
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ staggerChildren: stagger }}
     >
       {children}

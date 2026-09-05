@@ -32,7 +32,6 @@ export default function VieScolairePage() {
         title="Un espace scolaire pensé pour le bien-être des élèves"
         description="Au-delà des salles de classe, School Academy offre un cadre complet : restauration, culture, sport et ressources documentaires."
         icon={CookingPotIcon}
-        stats={cantine.facts?.map((f) => ({ label: f.label, value: f.value }))}
       />
 
       <section id="cantine" className="scroll-mt-24 py-12 sm:py-16">
@@ -65,21 +64,14 @@ export default function VieScolairePage() {
         </div>
       </section>
 
-      <section className="bg-muted/60 py-11 sm:py-14">
-        <div className="container-page flex flex-col gap-8">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
-            <SectionHeading
-              title="Des espaces dédiés à chaque activité"
-              description="De la lecture au sport, chaque élève trouve un lieu pour progresser et s'épanouir."
-            />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-[220px] sm:max-w-xs">
-              <Illustration
-                src="/assets/undraw_book-lover_m9n3.svg"
-                width={800}
-                height={622}
-              />
-            </Reveal>
-          </div>
+      <section className="bg-muted/60 py-12 sm:py-16">
+        <div className="container-page flex flex-col gap-10 sm:gap-12">
+          <SectionHeading
+            align="center"
+            title="Des espaces dédiés à chaque activité"
+            description="De la lecture au sport, chaque élève trouve un lieu pour progresser et s'épanouir."
+            className="items-center text-center max-w-3xl mx-auto"
+          />
           <ServicesGrid />
         </div>
       </section>
@@ -107,11 +99,11 @@ export default function VieScolairePage() {
               title="Activités & loisirs"
               description="Clubs, sorties, fêtes et temps forts collectifs : des occasions régulières de grandir ensemble, au-delà du programme scolaire."
             />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-[220px] sm:max-w-xs">
+            <Reveal delay={0.1} className="mx-auto w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[240px]">
               <Illustration
-                src="/assets/undraw_motion-alert_pr1a.svg"
-                width={819}
-                height={800}
+                src="/assets/undraw_children_e6ln.svg"
+                width={865}
+                height={439}
               />
             </Reveal>
           </div>

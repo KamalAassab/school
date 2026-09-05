@@ -17,7 +17,6 @@ export function CyclesRow() {
       <div className="container-page flex flex-col gap-10">
         {/* Header */}
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
-          <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-primary">Cycles d'enseignement</p>
           <h2 className="font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl">
             Un accompagnement pensé pour chaque âge
           </h2>
@@ -27,16 +26,16 @@ export function CyclesRow() {
         </div>
 
         {/* Bento grid */}
-        <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr]">
+        <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
           {cycles.map((cycle, i) => {
             const theme = cycleTheme[i];
             const isDark = i === 3;
             return (
-              <RevealItem key={cycle.slug}>
+              <RevealItem key={cycle.slug} className="flex h-full w-full">
                 <Link
                   href={`/pedagogie#${cycle.slug}`}
                   className={[
-                    "group relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden rounded-[28px] p-7 transition-all duration-300 hover:-translate-y-1 sm:min-h-[320px] lg:min-h-[360px]",
+                    "group relative flex h-full w-full flex-col justify-between overflow-hidden rounded-[28px] p-7 transition-all duration-300 hover:-translate-y-1",
                     theme.bg,
                     isDark
                       ? "hover:shadow-[0_24px_56px_-20px_rgba(32,26,21,0.55)]"
@@ -75,7 +74,7 @@ export function CyclesRow() {
                   </div>
 
                   {/* Bottom */}
-                  <div className="relative flex flex-col gap-4">
+                  <div className="relative flex flex-1 flex-col justify-between gap-4 pt-4">
                     <p
                       className={[
                         "text-[14px] leading-relaxed",

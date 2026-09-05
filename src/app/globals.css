@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -45,6 +46,8 @@
 }
 
 @theme inline {
+  --breakpoint-xs: 27.5rem;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -71,6 +74,7 @@
 
   --font-sans: var(--font-jakarta);
   --font-display: var(--font-bricolage);
+  --font-arabic: var(--font-rubik), sans-serif;
 
   --radius-sm: calc(var(--radius) - 0.5rem);
   --radius-md: calc(var(--radius) - 0.25rem);
@@ -80,9 +84,22 @@
 
   --animate-marquee: marquee 42s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
+  --animate-blob: blob 14s ease-in-out infinite;
   --animate-accordion-down: accordion-down 0.25s ease-out;
   --animate-accordion-up: accordion-up 0.25s ease-out;
 
+  @keyframes blob {
+    0%,
+    100% {
+      border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    }
+    34% {
+      border-radius: 42% 58% 63% 37% / 41% 55% 45% 59%;
+    }
+    67% {
+      border-radius: 57% 43% 39% 61% / 62% 40% 60% 38%;
+    }
+  }
   @keyframes marquee {
     from {
       transform: translateX(0);
@@ -125,6 +142,16 @@
     -ms-overflow-style: none;
   }
 
+  /* Arabic Font: Rubik for Arabic text only */
+  :lang(ar),
+  [dir="rtl"],
+  .font-arabic,
+  .rubik-arabic {
+    font-family: var(--font-rubik), sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
   /* Default smooth transitions on all interactive elements */
   a,
   button,
@@ -149,11 +176,15 @@
     height: 0;
   }
   html {
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :root:has(:target) {
+      scroll-behavior: smooth;
+    }
   }
   html::-webkit-scrollbar {
     display: none;

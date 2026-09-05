@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Plus_Jakarta_Sans, Rubik } from "next/font/google";
 
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
@@ -17,6 +17,12 @@ const jakarta = Plus_Jakarta_Sans({
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-bricolage",
+  display: "swap",
+});
+
+const rubik = Rubik({
+  subsets: ["latin", "arabic"],
+  variable: "--font-rubik",
   display: "swap",
 });
 
@@ -43,8 +49,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: "#fbfaf7",
 };
 
@@ -54,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${jakarta.variable} ${bricolage.variable}`}>
+    <html lang="fr" className={`${jakarta.variable} ${bricolage.variable} ${rubik.variable}`}>
       <body className="flex min-h-screen flex-col">
         <Header />
         <main className="flex-1 overflow-x-clip">{children}</main>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/arrow-right";
 
 import { Reveal } from "@/components/site/reveal";
-import { VideoPlayer } from "@/components/site/video-player";
+import { VideoPlayer } from "@/components/video-player/video-player";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ export function CtaBand({
   secondaryLabel = "Nous contacter",
   secondaryHref = "/contact",
   videoSrc,
+  videoPoster = "/images/second-video.png",
 }: {
   title: React.ReactNode;
   description?: string;
@@ -22,6 +23,7 @@ export function CtaBand({
   secondaryLabel?: string;
   secondaryHref?: string;
   videoSrc?: string;
+  videoPoster?: string;
 }) {
   return (
     <section className="bg-[#bf4802] py-12 sm:py-16">
@@ -44,7 +46,11 @@ export function CtaBand({
           />
 
           {videoSrc ? (
-            <VideoPlayer src={videoSrc} className="aspect-video w-full rounded-[20px]" />
+            <VideoPlayer
+              src={videoSrc}
+              poster={videoPoster}
+              className="aspect-video w-full rounded-[20px]"
+            />
           ) : null}
 
           <div

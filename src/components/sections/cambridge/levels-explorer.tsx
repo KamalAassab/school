@@ -4,15 +4,16 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cambridgeLevels } from "@/lib/content";
 import { storage } from "@/lib/storage";
+import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "cambridge:activeLevel";
 
-const levelColors: Record<string, { bg: string; accent: string; badge: string }> = {
-  "YLE Starters": { bg: "bg-amber-50", accent: "text-amber-700", badge: "bg-amber-100 text-amber-800" },
-  "YLE Movers":   { bg: "bg-orange-50", accent: "text-orange-700", badge: "bg-orange-100 text-orange-800" },
-  "YLE Flyers":   { bg: "bg-rose-50", accent: "text-rose-700", badge: "bg-rose-100 text-rose-800" },
-  "KET":          { bg: "bg-violet-50", accent: "text-violet-700", badge: "bg-violet-100 text-violet-800" },
-  "PET":          { bg: "bg-sky-50", accent: "text-sky-700", badge: "bg-sky-100 text-sky-800" },
+const levelBadges: Record<string, string> = {
+  "YLE Starters": "bg-amber-100 text-amber-800",
+  "YLE Movers":   "bg-orange-100 text-orange-800",
+  "YLE Flyers":   "bg-rose-100 text-rose-800",
+  "KET":          "bg-violet-100 text-violet-800",
+  "PET":          "bg-sky-100 text-sky-800",
 };
 
 export function LevelsExplorer() {
@@ -30,106 +31,89 @@ export function LevelsExplorer() {
     storage.set(STORAGE_KEY, code);
   }
 
-  const activeLevel = cambridgeLevels.find((l) => l.code === active)!;
-  const colors = levelColors[active] ?? levelColors["YLE Starters"];
+  const activeLevel = cambridgeLevels.find((l) => l.code === active) ?? cambridgeLevels[0];
+  const badgeClass = levelBadges[active] ?? "bg-primary/10 text-primary";
 
   return (
-    <div className="flex flex-col gap-6">
-      {/* Book-shelf row */}
-      <div className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-5 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0">
+    <div className="flex flex-col gap-4 sm:gap-5">
+      {/* Compact level selector pills */}
+      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
         {cambridgeLevels.map((level) => {
           const isActive = level.code === active;
-          const c = levelColors[level.code] ?? levelColors["YLE Starters"];
           return (
             <button
               key={level.code}
+              type="button"
               onClick={() => handleSelect(level.code)}
-              className={[
-                "group relative flex w-[52%] shrink-0 snap-start flex-col overflow-hidden rounded-[22px] transition-all duration-300 sm:w-auto",
+              className={cn(
+                "rounded-full px-3.5 py-1.5 text-xs sm:text-sm font-medium transition-all duration-150 cursor-pointer",
                 isActive
-                  ? "ring-2 ring-primary shadow-[0_16px_40px_-16px_rgba(32,26,21,0.30)] -translate-y-1"
-                  : "opacity-80 hover:opacity-100 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px_rgba(32,26,21,0.20)]",
-              ].join(" ")}
+                  ? "bg-primary text-primary-foreground font-semibold shadow-xs"
+                  : "bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground"
+              )}
             >
-              {/* Book cover image */}
-              <div className="relative aspect-[3/4] w-full">
-                <Image
-                  src={level.image}
-                  alt={`Livre Cambridge ${level.code}`}
-                  fill
-                  sizes="(min-width: 640px) 20vw, 55vw"
-                  className="object-cover"
-                />
-                {isActive && (
-                  <div className="absolute inset-0 bg-primary/10" />
-                )}
-              </div>
-              {/* Label below image */}
-              <div className={["px-3 py-2.5 text-left", c.bg].join(" ")}>
-                <p className={["font-display text-[13px] font-semibold leading-tight", c.accent].join(" ")}>
-                  {level.code}
-                </p>
-                <p className="text-[11px] text-foreground/50">{level.audience}</p>
-              </div>
+              <span>{level.code}</span>
+              <span className={cn("ml-1 text-[11px]", isActive ? "text-white/80" : "text-muted-foreground/60")}>
+                ({level.audience})
+              </span>
             </button>
           );
         })}
       </div>
 
-      {/* Detail panel */}
-      <div
-        key={active}
-        className={[
-          "grid grid-cols-1 gap-8 rounded-[28px] p-7 sm:p-10 lg:grid-cols-[1fr_1.6fr] lg:gap-12",
-          colors.bg,
-        ].join(" ")}
-      >
-        {/* Left: cover + quick stats */}
-        <div className="flex flex-col gap-6">
-          <div className="mx-auto w-full max-w-[180px] sm:max-w-none lg:max-w-none">
-            <div className="img-zoom-wrap relative aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-[0_20px_48px_-16px_rgba(32,26,21,0.28)]">
-              <Image
-                src={activeLevel.image}
-                alt={`Manuel Cambridge ${active}`}
-                fill
-                sizes="(min-width: 1024px) 220px, 60vw"
-                className="img-zoom object-cover"
-              />
-            </div>
+      {/* Direct, clean card without nested boxes or bloated paddings */}
+      <div className="rounded-2xl bg-white p-5 sm:p-6 border border-ink/[0.06] shadow-xs">
+        <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-start">
+          {/* Book cover - direct showcase with no outer gray wrapper box */}
+          <div className="relative aspect-[3/4] w-28 sm:w-36 lg:w-40 shrink-0 overflow-hidden rounded-xl shadow-md mx-auto sm:mx-0">
+            <Image
+              src={activeLevel.image}
+              alt={`Manuel Cambridge ${activeLevel.code}`}
+              fill
+              sizes="(min-width: 1024px) 160px, (min-width: 640px) 144px, 112px"
+              className="object-cover"
+            />
           </div>
 
-          {/* Duration table */}
-          <div className="rounded-2xl bg-white/80 p-5 backdrop-blur-sm">
-            <div className="mb-3 flex items-center justify-between">
-              <span className="text-[12px] font-medium uppercase tracking-[0.1em] text-foreground/50">Durée totale</span>
-              <span className={["font-display text-sm font-semibold", colors.accent].join(" ")}>{activeLevel.duration}</span>
+          {/* Content */}
+          <div className="flex flex-1 min-w-0 flex-col gap-3">
+            {/* Header row: Title + Badge + Duration */}
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
+                {activeLevel.code}
+              </h3>
+              <span className={cn("rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide", badgeClass)}>
+                {activeLevel.audience}
+              </span>
+              <span className="text-xs text-muted-foreground">
+                · {activeLevel.duration}
+              </span>
             </div>
-            <div className="flex flex-col gap-2 border-t border-ink/[0.07] pt-3">
+
+            {/* Description */}
+            <p className="text-[14px] leading-relaxed text-foreground/85">
+              {activeLevel.text}
+            </p>
+
+            {/* Candidate Profile / Details */}
+            <p className="text-[13px] leading-relaxed text-muted-foreground">
+              <strong className="font-medium text-foreground/90">Profil &amp; compétences : </strong>
+              {activeLevel.details}
+            </p>
+
+            {/* Test breakdown pills */}
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <span className="text-xs font-medium text-muted-foreground">Épreuves :</span>
               {activeLevel.sections.map((s) => (
-                <div key={s.label} className="flex items-center justify-between text-[13px]">
-                  <span className="text-muted-foreground">{s.label}</span>
-                  <span className="font-medium">{s.time}</span>
-                </div>
+                <span
+                  key={s.label}
+                  className="inline-flex items-center gap-1 rounded-md bg-muted/60 px-2.5 py-1 text-xs text-foreground/80"
+                >
+                  <span className="font-medium">{s.label}</span>
+                  <span className="text-muted-foreground">({s.time})</span>
+                </span>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* Right: content */}
-        <div className="flex flex-col gap-5 lg:pt-2">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className={["rounded-full px-3 py-1.5 text-[12px] font-semibold uppercase tracking-wide", colors.badge].join(" ")}>
-              {activeLevel.audience}
-            </span>
-          </div>
-          <h3 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">
-            {activeLevel.code}
-          </h3>
-          <p className="text-[16px] leading-relaxed text-foreground/80">
-            {activeLevel.text}
-          </p>
-          <div className="rounded-2xl bg-white/60 px-6 py-5 text-[14px] leading-relaxed text-muted-foreground">
-            {activeLevel.details}
           </div>
         </div>
       </div>

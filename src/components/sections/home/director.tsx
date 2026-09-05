@@ -3,14 +3,15 @@ import { ArrowRightIcon } from "@/components/ui/arrow-right";
 import { MessageSquareIcon } from "@/components/ui/message-square";
 
 import { Reveal } from "@/components/site/reveal";
-import { VideoPlayer } from "@/components/site/video-player";
+import { VideoPlayer } from "@/components/video-player/video-player";
 import { Button } from "@/components/ui/button";
 import { presentationSections } from "@/lib/content";
 
 export function Director() {
+  // Mot du directeur d'établissement
   return (
     <section className="py-11 sm:py-14">
-      <div className="container-page flex flex-col gap-10">
+      <div className="container-page flex flex-col gap-10 px-3 sm:px-8 lg:px-10">
         <Reveal className="mx-auto w-full max-w-4xl">
           <VideoPlayer
             src="/media/mot-du-directeur.mp4"
@@ -19,9 +20,9 @@ export function Director() {
           />
         </Reveal>
 
-        <Reveal delay={0.1} className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
+        <Reveal delay={0.1} className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 px-1 sm:px-0 text-center">
           <MessageSquareIcon size={32} className="text-brand" />
-          <p className="font-display text-xl font-medium leading-snug tracking-tight text-balance sm:text-2xl">
+          <p className="font-display text-lg font-medium leading-relaxed tracking-tight text-balance sm:text-xl lg:text-2xl">
             {presentationSections.fondateurs.text}
           </p>
           <div className="flex items-center gap-3 pt-1">

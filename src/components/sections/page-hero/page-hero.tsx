@@ -10,7 +10,7 @@ export function PageHero({
   className,
 }: {
   title: React.ReactNode;
-  description: string;
+  description?: string;
   icon: IconComponent;
   stats?: { label: string; value: string }[];
   className?: string;
@@ -23,15 +23,12 @@ export function PageHero({
       />
       <div className="container-page relative flex flex-col gap-8">
         <Reveal className="flex flex-col items-center gap-4 text-center sm:items-start sm:gap-5 sm:text-left">
-          <div className="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:gap-4">
+          <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:items-center sm:gap-4">
             <IconCmp size={30} className="shrink-0 text-primary" />
-            <h1 className="font-display text-[1.5rem] font-medium leading-[1.2] tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]">
+            <h1 className="font-display text-[clamp(1.15rem,2.35vw,2.35rem)] font-medium leading-tight tracking-tight sm:whitespace-nowrap">
               {title}
             </h1>
           </div>
-          <p className="max-w-[42ch] text-[15px] leading-relaxed text-muted-foreground sm:max-w-[70ch] sm:text-[17px]">
-            {description}
-          </p>
         </Reveal>
 
         {stats && stats.length > 0 ? (

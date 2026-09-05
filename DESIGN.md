@@ -116,11 +116,7 @@ Top-level pages (keep this list - don't add without updating this file):
 ## 10. Footer
 
 - `Footer` is light (`bg-[#fdf8f0]`, dark text) - not the `bg-ink` dark treatment
-  used elsewhere. Content (logo, nav columns, copyright bar) sits in normal
-  `container-page` padding; `/public/assets/footer-bg.png` (colored pencils) is
-  placed as the very last element, full viewport width, natural aspect ratio
-  (`w-full h-auto`, no cropping) so it reads as a colorful strip flush with the
-  bottom of the page.
+  used elsewhere.
 - No fabricated social links - only real channels (email, inscription CTA) are
   ever placed here. If real social profiles are added later, use the matching
   `@lucide-animated` icons (`facebook`, `instagram`, `linkedin`, `twitter` are

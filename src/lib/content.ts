@@ -9,7 +9,7 @@ export const siteConfig = {
   locale: "fr_MA",
   social: {
     facebook: "https://www.facebook.com/schoolacademyofficiel/",
-    instagram: "https://www.instagram.com/schoolacademy_eljadida/",
+    instagram: "https://www.instagram.com/schoolacademyeljadida/",
     youtube: "https://www.youtube.com/channel/UCL_GLvGCWhMe-vXywkw2szg",
   },
   portalUrl: "https://www.myconnect.school/?ecole=11816199",

@@ -413,7 +413,7 @@ export function StaggeredMenu({
       <button
         ref={toggleBtnRef}
         className={cn(
-          "sm-toggle relative inline-flex size-10 items-center justify-center rounded-full bg-muted text-foreground transition-all duration-200 active:scale-95 hover:bg-ink/[0.08] hover:text-primary",
+          "sm-toggle relative inline-flex size-11 items-center justify-center rounded-full bg-muted text-foreground transition-all duration-200 active:scale-95 hover:bg-ink/[0.08] hover:text-primary",
           open && "text-primary"
         )}
         aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
@@ -504,7 +504,7 @@ export function StaggeredMenu({
                     <button
                       type="button"
                       onClick={closeMenu}
-                      className="flex size-9 items-center justify-center rounded-full bg-muted text-foreground transition-all duration-200 hover:bg-ink/[0.08] hover:text-primary active:scale-95"
+                      className="flex size-11 items-center justify-center rounded-full bg-muted text-foreground transition-all duration-200 hover:bg-ink/[0.08] hover:text-primary active:scale-95"
                       aria-label="Fermer le menu"
                     >
                       <span className="relative flex size-5 items-center justify-center transition-transform duration-300 ease-in-out rotate-180 hover:rotate-90">
@@ -556,7 +556,7 @@ export function StaggeredMenu({
                                   toggleDropdown(it.label);
                                 }}
                                 className={cn(
-                                  "size-8 inline-flex items-center justify-center rounded-full transition-all duration-200",
+                                  "size-10 inline-flex items-center justify-center rounded-full transition-all duration-200",
                                   isExpanded
                                     ? "bg-primary/10 text-primary"
                                     : "bg-ink/[0.04] text-ink/70 hover:bg-ink/[0.08] hover:text-primary"
@@ -637,8 +637,8 @@ export function StaggeredMenu({
                                 className={cn(
                                   "sm-socials-link flex items-center justify-center rounded-full bg-muted text-foreground transition-all duration-200 hover:bg-primary hover:text-white active:scale-95 shadow-2xs",
                                   isPhone
-                                    ? "h-9 px-3 gap-2 text-xs font-medium hover:bg-secondary hover:text-primary"
-                                    : "size-9"
+                                    ? "h-11 px-3 gap-2 text-xs font-medium hover:bg-secondary hover:text-primary"
+                                    : "size-11"
                                 )}
                                 aria-label={s.label}
                                 onClick={closeMenu}
