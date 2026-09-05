@@ -1,13 +1,5 @@
-import { SparklesIcon } from "@/components/ui/sparkles";
-import { CompassIcon } from "@/components/ui/compass";
-import { TelescopeIcon } from "@/components/ui/telescope";
-import { CircleCheckIcon } from "@/components/ui/circle-check";
-import { StampIcon } from "@/components/ui/stamp";
-
 import { Reveal } from "@/components/site/reveal";
 import { cambridgeLevels } from "@/lib/content";
-
-const levelIcons = [SparklesIcon, CompassIcon, TelescopeIcon, CircleCheckIcon, StampIcon];
 
 export function CambridgeSeal() {
   return (
@@ -41,18 +33,14 @@ export function CambridgeSeal() {
             de Cambridge Assessment English et qui se traduit comme suit :
           </p>
           <div className="flex flex-wrap justify-center gap-2.5 pt-1">
-            {cambridgeLevels.map((level, i) => {
-              const Icon = levelIcons[i % levelIcons.length];
-              return (
-                <span
-                  key={level.code}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-[12.5px] font-medium text-foreground/80"
-                >
-                  <Icon size={15} className="text-primary" />
-                  {level.code}
-                </span>
-              );
-            })}
+            {cambridgeLevels.map((level) => (
+              <span
+                key={level.code}
+                className="inline-flex items-center rounded-full bg-white px-4 py-2 text-[12.5px] font-medium text-foreground/80"
+              >
+                {level.code}
+              </span>
+            ))}
           </div>
         </Reveal>
       </div>
