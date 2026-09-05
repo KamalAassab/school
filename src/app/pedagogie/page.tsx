@@ -54,7 +54,7 @@ export default function PedagogiePage() {
               title="Nos cycles d'enseignement"
               description="Explorez le programme et les temps forts de chaque cycle."
             />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[240px]">
+            <Reveal className="mx-auto w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[240px]">
               <Illustration
                 src="/assets/undraw_studying-science_kk9e.svg"
                 width={960}
@@ -92,7 +92,7 @@ export default function PedagogiePage() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.1} className="group relative aspect-[16/10] w-full overflow-hidden rounded-2xl sm:rounded-3xl shadow-sm border border-ink/[0.06]">
+            <Reveal className="group relative aspect-[16/10] w-full overflow-hidden rounded-2xl sm:rounded-3xl shadow-sm border border-ink/[0.06]">
               <Image
                 src="/images/pedagogie/tice-table.webp"
                 alt="Table interactive tactile, School Academy"
@@ -152,7 +152,7 @@ export default function PedagogiePage() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.1} className="flex items-center justify-center h-full min-h-0 p-0">
+            <Reveal className="flex items-center justify-center h-full min-h-0 p-0">
               <Illustration
                 src="/assets/undraw_learning_qt7d.svg"
                 width={394}
@@ -191,7 +191,7 @@ export default function PedagogiePage() {
             </div>
 
             {/* Campus Facilities Showcase (Multiplicité) - All 15 items with full text and no truncation */}
-            <Reveal delay={0.1} className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-ink/[0.06] shadow-xs">
+            <Reveal className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-ink/[0.06] shadow-xs">
               <div className="flex items-center gap-3 border-b border-ink/[0.06] pb-4 mb-5">
                 <WaypointsIcon size={22} className="text-primary shrink-0" />
                 <h4 className="font-display text-base font-semibold tracking-tight text-foreground">
@@ -246,7 +246,7 @@ export default function PedagogiePage() {
               title="Ouverts sur le monde, proches des familles"
               className="[&_h2]:text-background [&_p]:text-background/60"
             />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-[240px] sm:max-w-sm lg:max-w-none">
+            <Reveal className="mx-auto w-full max-w-[240px] sm:max-w-sm lg:max-w-none">
               <Illustration
                 src="/assets/undraw_road-to-knowledge_ufma.svg"
                 width={960}

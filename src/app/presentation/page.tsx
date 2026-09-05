@@ -90,7 +90,7 @@ export default function PresentationPage() {
               />
             </div>
           </Reveal>
-          <Reveal delay={0.1} className="flex flex-col gap-6">
+          <Reveal className="flex flex-col gap-6">
             <MessageSquareIcon size={40} className="text-brand" />
             <h2 className="font-display text-2xl font-medium tracking-tight text-balance sm:text-4xl">
               {presentationSections.fondateurs.title}
@@ -175,7 +175,7 @@ export default function PresentationPage() {
             </Reveal>
 
             {/* Card 2: Ressources humaines with collapsed accordion by default */}
-            <Reveal delay={0.1} className="flex h-full flex-col justify-between gap-6 rounded-2xl border border-ink/[0.06] bg-white p-6 sm:p-8 shadow-xs">
+            <Reveal className="flex h-full flex-col justify-between gap-6 rounded-2xl border border-ink/[0.06] bg-white p-6 sm:p-8 shadow-xs">
               <div className="flex flex-col gap-4">
                 {/* Header with illustration side-by-side */}
                 <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-4 border-b border-ink/[0.06] pb-4">

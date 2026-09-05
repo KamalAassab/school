@@ -25,7 +25,7 @@ export function Canteen() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="order-1 flex flex-col gap-6 lg:order-2">
+        <Reveal className="order-1 flex flex-col gap-6 lg:order-2">
           <div className="flex items-center gap-3 sm:gap-3.5">
             <ShieldCheckIcon size={32} className="shrink-0 text-primary sm:size-9" />
             <h2 className="font-display text-xl font-medium tracking-tight text-balance sm:text-2xl lg:text-3xl">

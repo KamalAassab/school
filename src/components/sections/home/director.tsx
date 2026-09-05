@@ -20,7 +20,7 @@ export function Director() {
           />
         </Reveal>
 
-        <Reveal delay={0.1} className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 px-1 sm:px-0 text-center">
+        <Reveal className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 px-1 sm:px-0 text-center">
           <MessageSquareIcon size={32} className="text-brand" />
           <p className="font-display text-lg font-medium leading-relaxed tracking-tight text-balance sm:text-xl lg:text-2xl">
             {presentationSections.fondateurs.text}

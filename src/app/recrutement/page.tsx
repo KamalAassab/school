@@ -50,7 +50,7 @@ export default function RecrutementPage() {
             </Accordion>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          <Reveal>
             <div className="sticky top-28 flex flex-col gap-6 rounded-[28px] bg-ink p-8 text-background">
               <Illustration
                 src="/assets/undraw_teacher_n0ow.svg"

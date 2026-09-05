@@ -52,7 +52,7 @@ export default function InscriptionPage() {
               Offrez à votre enfant le tremplin vers l&rsquo;excellence
             </h1>
           </Reveal>
-          <Reveal delay={0.1} className="mx-auto w-full max-w-[280px] sm:max-w-md lg:max-w-none">
+          <Reveal className="mx-auto w-full max-w-[280px] sm:max-w-md lg:max-w-none">
             <Illustration
               src="/assets/undraw_back-to-school-offers_uorw.svg"
               width={960}

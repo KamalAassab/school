@@ -16,7 +16,7 @@ export function CambridgeSeal() {
           />
         </Reveal>
 
-        <Reveal delay={0.1} className="flex flex-col items-center text-center gap-4">
+        <Reveal className="flex flex-col items-center text-center gap-4">
           <div className="flex flex-col items-center text-center gap-1">
             <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">
               Cambridge Assessment English

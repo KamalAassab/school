@@ -34,7 +34,7 @@ export default function ContactPage() {
             <ContactForm />
           </Reveal>
 
-          <Reveal delay={0.1} className="flex flex-col gap-6">
+          <Reveal className="flex flex-col gap-6">
             <div className="flex flex-col gap-4 rounded-[28px] bg-ink p-8 text-background">
               <h3 className="font-display text-lg font-medium">Écrivez-nous directement</h3>
               <Link

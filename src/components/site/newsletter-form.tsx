@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { MailboxIcon } from "@/components/ui/mailbox";
 import { storage } from "@/lib/storage";
 

@@ -45,10 +45,10 @@ export function CambridgeHighlight() {
           </ul>
         </Reveal>
 
-        <Reveal delay={0.1}>
+        <Reveal>
           <RevealGroup className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 py-5 sm:flex-wrap sm:justify-center sm:gap-5 sm:overflow-visible sm:px-0">
             {cambridgeLevels.map((level, i) => (
-              <RevealItem key={level.code} y={14}>
+              <RevealItem key={level.code}>
                 <Link
                   href="/cambridge"
                   className={[

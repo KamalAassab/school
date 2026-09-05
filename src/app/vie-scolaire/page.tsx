@@ -47,7 +47,7 @@ export default function VieScolairePage() {
               />
             </div>
           </Reveal>
-          <Reveal delay={0.1} className="order-1 flex flex-col gap-6 lg:order-2">
+          <Reveal className="order-1 flex flex-col gap-6 lg:order-2">
             <h2 className="font-display text-3xl font-medium tracking-tight text-balance sm:text-4xl">
               {cantine.title}
             </h2>
@@ -86,7 +86,7 @@ export default function VieScolairePage() {
               {fournitures.text}
             </p>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal>
             <FournituresDownload />
           </Reveal>
         </div>
@@ -99,7 +99,7 @@ export default function VieScolairePage() {
               title="Activités & loisirs"
               description="Clubs, sorties, fêtes et temps forts collectifs : des occasions régulières de grandir ensemble, au-delà du programme scolaire."
             />
-            <Reveal delay={0.1} className="mx-auto w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[240px]">
+            <Reveal className="mx-auto w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[240px]">
               <Illustration
                 src="/assets/undraw_children_e6ln.svg"
                 width={865}

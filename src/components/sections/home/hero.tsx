@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { FlaskConical, Atom, Languages } from "lucide-react";
 import { ArrowRightIcon } from "@/components/ui/arrow-right";
 import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right";
@@ -79,12 +76,7 @@ export function Hero() {
     <section className="relative overflow-hidden pb-14 sm:pb-16 lg:pt-8 lg:pb-28">
       <div className="container-page relative grid grid-cols-1 items-center gap-8 pt-2 sm:gap-14 sm:pt-4 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pt-6">
         {/* Left column: copy */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-start gap-4 sm:gap-7"
-        >
+        <div className="flex flex-col items-start gap-4 sm:gap-7">
           <h1 className="font-display text-[clamp(2.5rem,1.8rem+3.3vw,4.5rem)] font-bold leading-[1.02] tracking-[-0.03em] text-balance">
             Le tremplin
             <br />
@@ -146,15 +138,10 @@ export function Hero() {
             </Button>
           </div>
 
-        </motion.div>
+        </div>
 
         {/* Right column: photo cutout + floating accents */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto w-full max-w-[680px] lg:mx-0 lg:max-w-none"
-        >
+        <div className="relative mx-auto w-full max-w-[680px] lg:mx-0 lg:max-w-none">
 
           <div className="scale-105 lg:scale-120 -translate-x-3 lg:-translate-x-14 origin-center transition-transform">
             <div className="@container relative aspect-[3/2] w-full [container-type:inline-size]">
@@ -186,7 +173,7 @@ export function Hero() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
