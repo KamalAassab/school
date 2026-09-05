@@ -140,10 +140,6 @@ export function Footer() {
               referrerPolicy="no-referrer-when-downgrade"
               className="size-full border-0"
             />
-            <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-md backdrop-blur-xs">
-              <MapPinIcon size={14} className="text-primary" />
-              <span>School Academy — El Jadida</span>
-            </div>
             <Link
               href={siteConfig.mapLink}
               target="_blank"
