@@ -117,7 +117,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full px-3 pt-3 pb-[10px] transition-all duration-300 sm:top-0 sm:px-5 sm:pt-4 sm:pb-3 lg:px-8">
+    <header className="sticky top-0 z-40 w-full px-3 pt-3 pb-[10px] transition-all duration-300 sm:top-0 sm:px-5 sm:pt-4 sm:pb-3 lg:px-8">
       <div
         className={cn(
           "mx-auto flex h-16 w-full max-w-[1320px] items-center justify-between rounded-full border transition-all duration-300 sm:h-[68px]",

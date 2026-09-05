@@ -12,7 +12,7 @@ import { footerNav, siteConfig } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="relative z-50 bg-[#fdf8f0] text-foreground">
+    <footer className="relative z-0 bg-[#fdf8f0] text-foreground">
       <div className="mx-auto w-[90%] flex flex-col gap-10 pt-12 pb-8 sm:pt-14 sm:pb-10">
         {/* Top section: 6 columns in 1 row */}
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6 lg:gap-8 items-start">

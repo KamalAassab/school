@@ -50,12 +50,10 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [volume, setVolume] = React.useState(1);
   const [isMuted, setIsMuted] = React.useState(initialMuted);
   const [isFullscreen, setIsFullscreen] = React.useState(false);
-  const [playbackRate, setPlaybackRate] = React.useState(1);
-  const [showControls, setShowControls] = React.useState(true);
+  const [showControls, setShowControls] = React.useState(false);
   const [isHoveringSeek, setIsHoveringSeek] = React.useState(false);
   const [hoverTime, setHoverTime] = React.useState(0);
   const [hoverPositionPercent, setHoverPositionPercent] = React.useState(0);
-  const [showSpeedMenu, setShowSpeedMenu] = React.useState(false);
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -67,7 +65,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     hideControlsTimerRef.current = setTimeout(() => {
       if (!videoRef.current?.paused && !isDraggingSeekRef.current) {
         setShowControls(false);
-        setShowSpeedMenu(false);
       }
     }, 2800);
   }, []);
@@ -77,13 +74,26 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     scheduleControlsHide();
   }, [scheduleControlsHide]);
 
-  // Sync fullscreen state
+  // Sync fullscreen state across the standard API and Safari/iOS variants
   React.useEffect(() => {
+    const video = videoRef.current;
     const handleFullscreenChange = () => {
-      setIsFullscreen(Boolean(document.fullscreenElement));
+      const doc = document as Document & { webkitFullscreenElement?: Element | null };
+      const el = video as (HTMLVideoElement & { webkitDisplayingFullscreen?: boolean }) | null;
+      setIsFullscreen(
+        Boolean(document.fullscreenElement || doc.webkitFullscreenElement || el?.webkitDisplayingFullscreen)
+      );
     };
     document.addEventListener("fullscreenchange", handleFullscreenChange);
-    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+    video?.addEventListener("webkitbeginfullscreen", handleFullscreenChange);
+    video?.addEventListener("webkitendfullscreen", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
+      video?.removeEventListener("webkitbeginfullscreen", handleFullscreenChange);
+      video?.removeEventListener("webkitendfullscreen", handleFullscreenChange);
+    };
   }, []);
 
   // Update duration & buffering
@@ -162,39 +172,41 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     showControlsTemporarily();
   };
 
-  // Fullscreen toggle
+  // Fullscreen toggle. The standard Fullscreen API has no effect on
+  // arbitrary elements in mobile Safari, so iOS falls back to the
+  // video element's own native fullscreen presentation.
   const toggleFullscreen = () => {
-    const container = containerRef.current;
-    if (!container) return;
-    if (document.fullscreenElement) {
-      document.exitFullscreen().catch(() => {});
-    } else {
+    const container = containerRef.current as
+      | (HTMLDivElement & { webkitRequestFullscreen?: () => Promise<void> | void })
+      | null;
+    const video = videoRef.current as
+      | (HTMLVideoElement & {
+          webkitEnterFullscreen?: () => void;
+          webkitExitFullscreen?: () => void;
+          webkitDisplayingFullscreen?: boolean;
+        })
+      | null;
+    if (!container || !video) return;
+
+    const doc = document as Document & {
+      webkitFullscreenElement?: Element | null;
+      webkitExitFullscreen?: () => Promise<void> | void;
+    };
+    const currentlyFullscreen = Boolean(
+      document.fullscreenElement || doc.webkitFullscreenElement || video.webkitDisplayingFullscreen
+    );
+
+    if (currentlyFullscreen) {
+      if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+      else if (doc.webkitExitFullscreen) doc.webkitExitFullscreen();
+      else if (video.webkitExitFullscreen) video.webkitExitFullscreen();
+    } else if (container.requestFullscreen) {
       container.requestFullscreen().catch(() => {});
+    } else if (container.webkitRequestFullscreen) {
+      container.webkitRequestFullscreen();
+    } else if (video.webkitEnterFullscreen) {
+      video.webkitEnterFullscreen();
     }
-    showControlsTemporarily();
-  };
-
-  // Picture in Picture
-  const togglePiP = async () => {
-    const v = videoRef.current;
-    if (!v) return;
-    try {
-      if (document.pictureInPictureElement) {
-        await document.exitPictureInPicture();
-      } else if (v !== document.pictureInPictureElement && document.pictureInPictureEnabled) {
-        await v.requestPictureInPicture();
-      }
-    } catch {}
-    showControlsTemporarily();
-  };
-
-  // Playback rate
-  const changePlaybackRate = (rate: number) => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = rate;
-      setPlaybackRate(rate);
-    }
-    setShowSpeedMenu(false);
     showControlsTemporarily();
   };
 
@@ -320,7 +332,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       onMouseLeave={() => {
         if (isPlaying && !isDraggingSeekRef.current) {
           setShowControls(false);
-          setShowSpeedMenu(false);
         }
       }}
       className={cn(
@@ -559,51 +570,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 </span>
               </div>
 
-              {/* Right Controls: Speed, PiP, Fullscreen */}
+              {/* Right Controls: Fullscreen */}
               <div className="flex items-center gap-1 sm:gap-1.5">
-                {/* Speed Selector */}
-                <div className="relative">
-                  <button
-                    type="button"
-                    onClick={() => setShowSpeedMenu((prev) => !prev)}
-                    aria-label="Vitesse de lecture"
-                    className="flex h-7 sm:h-8 items-center justify-center rounded-md px-1.5 sm:px-2 text-[11px] sm:text-xs font-semibold text-white/85 transition-colors hover:bg-white/15 hover:text-white cursor-pointer"
-                  >
-                    {playbackRate}x
-                  </button>
-
-                  {showSpeedMenu ? (
-                    <div className="absolute bottom-full right-0 mb-2 flex flex-col rounded-lg bg-neutral-900/95 p-1 text-xs text-white shadow-xl backdrop-blur-md border border-white/10 z-30">
-                      {[0.5, 0.75, 1, 1.25, 1.5, 2].map((rate) => (
-                        <button
-                          key={rate}
-                          type="button"
-                          onClick={() => changePlaybackRate(rate)}
-                          className={cn(
-                            "rounded px-3 py-1.5 text-left font-medium transition-colors hover:bg-white/20 cursor-pointer",
-                            playbackRate === rate ? "bg-[#b84300] text-white font-bold" : "text-white/80"
-                          )}
-                        >
-                          {rate}x
-                        </button>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-
-                {/* Picture-in-Picture */}
-                <button
-                  type="button"
-                  onClick={togglePiP}
-                  aria-label="Incrustation vidéo (Picture in picture)"
-                  className="hidden sm:flex size-9 items-center justify-center rounded-lg text-white/80 transition-colors hover:bg-white/15 hover:text-white cursor-pointer"
-                >
-                  <svg viewBox="0 0 24 24" className="size-5 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                    <rect x="12" y="10" width="8" height="6" rx="1" fill="currentColor" stroke="none" />
-                  </svg>
-                </button>
-
                 {/* Fullscreen */}
                 <button
                   type="button"

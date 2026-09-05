@@ -16,7 +16,7 @@ export const siteConfig = {
   address: "Angle rue 32, Bd Jabran Khalil Jabran, 24 000 El Jadida",
   phones: ["05 23 34 34 96", "05 23 34 34 97", "06 61 84 76 65"],
   mapUrl:
-    "https://www.google.com/maps?q=School+Academy,33.2325126,-8.5302678&z=16&output=embed",
+    "https://www.google.com/maps?q=33.2325126,-8.5302678&z=16&output=embed",
   mapLink:
     "https://www.google.com/maps/place/School+Academy/@33.2325171,-8.5280791,17z/data=!3m1!4b1!4m5!3m4!1s0xda91e80579034f1:0x52803a1b9695df4d!8m2!3d33.2325126!4d-8.5302678",
 };

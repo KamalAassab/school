@@ -26,7 +26,7 @@ export function FloatingCta() {
     <div
       aria-hidden={!visible}
       className={cn(
-        "fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-40 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:right-8 sm:bottom-8",
+        "fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:right-8 sm:bottom-8",
         visible
           ? "translate-y-0 scale-100 opacity-100"
           : "pointer-events-none translate-y-4 scale-90 opacity-0"
