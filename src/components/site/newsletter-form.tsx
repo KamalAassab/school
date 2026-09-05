@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { MailboxIcon } from "@/components/ui/mailbox";
 import { storage } from "@/lib/storage";
+import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "newsletter:submitted";
 const DRAFT_KEY = "newsletter:draft";
@@ -47,45 +47,41 @@ export function NewsletterForm() {
       </div>
 
       <div className="w-full lg:w-auto lg:min-w-[340px] xl:min-w-[380px]">
-        <AnimatePresence mode="wait" initial={false}>
-          {submitted ? (
-            <motion.p
-              key="success"
-              initial={hydrated ? { opacity: 0, y: 6 } : false}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-xs sm:text-[13px] font-medium text-primary py-2 text-center lg:text-left"
+        {/* `hydrated` gates the animation so restoring a stored submission
+            on mount doesn't flash. */}
+        {submitted ? (
+          <p
+            className={cn(
+              "text-xs sm:text-[13px] font-medium text-primary py-2 text-center lg:text-left",
+              hydrated && "animate-in fade-in slide-in-from-bottom-1 duration-300"
+            )}
+          >
+            Merci&nbsp;! Vous êtes bien inscrit.
+          </p>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className={cn(
+              "flex flex-col sm:flex-row gap-2",
+              hydrated && "animate-in fade-in slide-in-from-bottom-1 duration-300"
+            )}
+          >
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={handleChange}
+              placeholder="votre@email.com"
+              className="min-w-0 w-full flex-1 rounded-xl border border-ink/10 bg-white px-3.5 py-2 text-xs sm:text-[13px] text-foreground placeholder:text-muted-foreground/60 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
+            />
+            <button
+              type="submit"
+              className="w-full sm:w-auto shrink-0 rounded-xl bg-primary px-4 py-2 text-xs sm:text-[13px] font-medium text-white transition-colors hover:bg-[#9c3a00] active:scale-95 cursor-pointer"
             >
-              Merci&nbsp;! Vous êtes bien inscrit.
-            </motion.p>
-          ) : (
-            <motion.form
-              key="form"
-              initial={hydrated ? { opacity: 0, y: 6 } : false}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              onSubmit={handleSubmit}
-              className="flex flex-col sm:flex-row gap-2"
-            >
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={handleChange}
-                placeholder="votre@email.com"
-                className="min-w-0 w-full flex-1 rounded-xl border border-ink/10 bg-white px-3.5 py-2 text-xs sm:text-[13px] text-foreground placeholder:text-muted-foreground/60 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
-              />
-              <button
-                type="submit"
-                className="w-full sm:w-auto shrink-0 rounded-xl bg-primary px-4 py-2 text-xs sm:text-[13px] font-medium text-white transition-colors hover:bg-[#9c3a00] active:scale-95 cursor-pointer"
-              >
-                S&rsquo;abonner
-              </button>
-            </motion.form>
-          )}
-        </AnimatePresence>
+              S&rsquo;abonner
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );
