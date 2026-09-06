@@ -3,7 +3,13 @@ export const siteConfig = {
   tagline: "Tremplin vers l'excellence",
   description:
     "École privée marocaine du préscolaire au lycée, centre agréé Cambridge Assessment English. School Academy prépare chaque élève à comprendre et à bâtir le monde de demain.",
-  url: "https://www.schoolacademy.ma",
+  // Canonical origin for metadataBase, Open Graph tags, robots.txt and the
+  // sitemap. It must be the domain this deployment is actually served from:
+  // pointing it at a domain we do not serve makes every canonical URL, social
+  // preview and sitemap entry resolve somewhere else. Note that `.vercel.app`
+  // never takes a `www.` prefix — Vercel's wildcard certificate covers a
+  // single label, so `www.<name>.vercel.app` fails TLS validation.
+  url: "https://schoolacademy-ma.vercel.app",
   email: "contact@schoolacademy.ma",
   year: "2026/2027",
   locale: "fr_MA",
