@@ -101,12 +101,18 @@ export function Hero() {
             .
           </h1>
 
-          {/* Decorative bookend-dash accent, echoing the reference layout */}
-          <div aria-hidden className="flex items-center gap-2">
-            <span className="inline-block h-3 w-10 rounded-full bg-ink" />
-            <span className="inline-block h-3 w-3 rounded-full bg-brand" />
-            <span className="inline-block h-3 w-3 rounded-full bg-brand" />
-            <span className="inline-block h-3 w-10 rounded-full bg-ink" />
+          {/* Decorative bookend-dash accent, echoing the reference layout,
+              paired with the school's founding year as a small trust marker */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div aria-hidden className="flex items-center gap-1.5 sm:gap-2">
+              <span className="inline-block h-2.5 w-7 rounded-full bg-ink sm:h-3 sm:w-10" />
+              <span className="inline-block size-2 rounded-full bg-brand sm:size-3" />
+              <span className="inline-block size-2 rounded-full bg-brand sm:size-3" />
+              <span className="inline-block h-2.5 w-7 rounded-full bg-ink sm:h-3 sm:w-10" />
+            </div>
+            <span className="text-[11px] font-medium uppercase tracking-[0.03em] text-muted-foreground sm:text-[12.5px] sm:tracking-[0.08em]">
+              École ouverte depuis 2015
+            </span>
           </div>
 
           <p className="hidden max-w-[46ch] text-[17px] leading-relaxed text-muted-foreground sm:block sm:text-lg">
