@@ -137,10 +137,6 @@ export function Hero() {
               </Link>
             </Button>
           </div>
-
-          <p className="text-[13px] font-bold uppercase tracking-[0.06em] text-primary sm:text-sm">
-            École ouverte depuis 2015
-          </p>
         </div>
 
         {/* Right column: photo cutout + floating accents */}
@@ -178,6 +174,10 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      <p className="container-page mt-8 text-center text-sm font-extrabold uppercase tracking-[0.08em] text-primary sm:mt-10 sm:text-base">
+        École ouverte depuis 2015
+      </p>
     </section>
   );
 }
